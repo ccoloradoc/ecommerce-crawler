@@ -124,29 +124,9 @@ function mergeMaps(maps) {
 
 
 console.log('Starting cron for ', targetName, ' with schedule time: ', target.cron)
-// cron.schedule(target.cron, () => {
-//   	console.log()
-// 	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
-// 	Promise.all([
-// 		hitPage(target.url)
-// 			.then(Parser),
-// 		hitPage(target.url + '&page=2')
-// 			.then(Parser),
-// 		hitPage(target.url + '&page=3')
-// 			.then(Parser),
-// 		hitPage(target.url + '&page=4')
-// 			.then(Parser),
-// 		hitPage(target.url + '&page=5')
-// 			.then(Parser)
-// 	])
-// 	.then(mergeMaps)
-// 	.then(updateInMemory.bind(null, target.delta))
-// 	.then(storeMap)
-// 	.then(itemsToCsv.bind(null, (timestamp) => {
-// 		return target.csv + timestamp + '.csv'
-// 	}))
-// });
-// 
+cron.schedule(target.cron, () => {
+  	console.log()
+	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
 	Promise.all([
 		hitPage(target.url)
 			.then(Parser),
@@ -165,3 +145,23 @@ console.log('Starting cron for ', targetName, ' with schedule time: ', target.cr
 	.then(itemsToCsv.bind(null, (timestamp) => {
 		return target.csv + timestamp + '.csv'
 	}))
+});
+
+	// Promise.all([
+	// 	hitPage(target.url)
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=2')
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=3')
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=4')
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=5')
+	// 		.then(Parser)
+	// ])
+	// .then(mergeMaps)
+	// .then(updateInMemory.bind(null, target.delta))
+	// .then(storeMap)
+	// .then(itemsToCsv.bind(null, (timestamp) => {
+	// 	return target.csv + timestamp + '.csv'
+	// }))
