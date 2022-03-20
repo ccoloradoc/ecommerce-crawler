@@ -3,7 +3,7 @@ const request = require('request');
 const cron = require('node-cron');
 const Utils = require('./src/commons/utils')
 const Roboto = require('./src/roboto')
-const config = require('./config.json')
+const config = require('./crawler.config')
 
 const targets = Object.keys(config.targets)
 const processArgs = process.argv.slice(2);
