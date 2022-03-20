@@ -2,6 +2,7 @@ const fs = require('fs')
 const request = require('request');
 const cron = require('node-cron');
 const Utils = require('./src/commons/utils')
+const MapUtils = require('./src/commons/maps')
 const Roboto = require('./src/roboto')
 const config = require('./crawler.config')
 
@@ -80,65 +81,23 @@ function updateInMemory(delta, itemsMap) {
 	return inMemoryMap
 }
 
-function storeMap(itemsMap) {
-	fs.writeFile(target.json, JSON.stringify(itemsMap), err => {
-		if (err) {
-		  console.error(err)
-		}
-	  })
-	return itemsMap
-}
-
-function itemsToCsv(generateFileName, itemsMap) {
-	let content = ''
-	Object.entries(itemsMap).forEach(([key, item]) => {
-		content += Utils.concatenate(
-			Utils.escape(item.id), ',', 
-			Utils.escape(item.title), ',', 
-				Utils.escape(item.price), ',', 
-				Utils.escape(item.image), ',', 
-				Utils.escape(item.link), '\n'
-		)
-	})
-	let filePath = generateFileName(Utils.printableNow())
-	console.log('Storing content to: ', filePath)
-	fs.writeFile(filePath, content, err => {
-		if (err) {
-		  console.error(err)
-		  return
-		}
-	  })
-	 return itemsMap
-}
-
-function mergeMaps(maps) {
-	let mergedMaps = {}
-	maps.forEach((map, i) => {
-		Object.keys(map).forEach((key, i) => {
-			mergedMaps[key] = map[key]
-		});
-		
-	});
-	return mergedMaps
-}
-
 console.log('Starting cron for ', targetName, ' with schedule time: ', target.cron)
 cron.schedule(target.cron, () => {
   	console.log()
 	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
 	hitPage(target.url)
 		.then(Parser)
-		.then(updateInMemory)
-		.then(storeMap)
-		.then(itemsToCsv.bind(null, (timestamp) => {
-			return target.csv + timestamp + '.csv'
+		.then(updateInMemory.bind(null, target.delta))
+		.then(MapUtils.storeMap.bind(null, target.json))
+		.then(MapUtils.itemsToCsv.bind(null, () => {
+			return target.csv + Utils.printableNow() + '.csv'
 		}))
 });
 
 // hitPage(target.url)
 // 	.then(Parser)
-// 	.then(updateInMemory)
-// 	.then(storeMap)
-// 	.then(itemsToCsv.bind(null, (timestamp) => {
-// 		return target.csv + timestamp + '.csv'
+// 	.then(updateInMemory.bind(null, target.delta))
+// 	.then(MapUtils.storeMap.bind(null, target.json))
+// 	.then(MapUtils.itemsToCsv.bind(null, () => {
+// 		return target.csv + Utils.printableNow() + '.csv'
 // 	}))

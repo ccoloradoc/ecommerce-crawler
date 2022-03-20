@@ -23,5 +23,7 @@ module.exports = {
 			str+= arguments[i]
 		}
 		return str
-	}
+	},
+	
+	
 }
