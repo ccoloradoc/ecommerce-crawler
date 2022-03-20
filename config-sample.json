@@ -9,6 +9,7 @@
 			"name": "MercadolibreMarvelLegends",
 			"url": "https://listado.mercadolibre.com.mx/marvel-legends_Tienda_hasbro#D[A:marvel%20legends,on]",
 			"parser": "mercadolibre",
+			"delta": 50,
 			"csv": "./archive/marvel-legends-",
 			"json": "./archive/marvel-legends.json",
 			"cron": "0,15,30,45 * * * *"
@@ -17,9 +18,19 @@
 			"name": "MercadolibreStarWars",
 			"url": "https://listado.mercadolibre.com.mx/star-wars_Tienda_hasbro#D[A:star%20wars,on]",
 			"parser": "mercadolibre",
+			"delta": 50,
 			"csv": "./archive/star-wars-",
 			"json": "./archive/star-wars.json",
 			"cron": "10,25,40,55 * * * *"
+		},
+		"AmazonMarvelLegends": {
+			"name": "AmazonMarvelLegends",
+			"url": "https://www.amazon.com.mx/s?k=marvel+legends+hasbro&rh=p_85%3A9841545011",
+			"parser": "amazon",
+			"delta": 50,
+			"csv": "./archive/amazon-marvel-legends-",
+			"json": "./archive/amazon-marvel-legends.json",
+			"cron": "0,20,40 * * * *"
 		}
 	}
 }

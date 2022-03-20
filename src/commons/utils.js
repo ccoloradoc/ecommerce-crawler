@@ -4,7 +4,7 @@ module.exports = {
 	},
 
 	clean: function(price) {
-		return parseInt(price.replace(',',''))
+		return parseInt(price.replace(',', '').replace('$', ''))
 	},
 	
 	printableNow: function() {
@@ -12,8 +12,8 @@ module.exports = {
 		return currentdate.getDate() + "-"
 	                + (currentdate.getMonth()+1)  + "-" 
 	                + currentdate.getFullYear() + "T"  
-	                + currentdate.getHours() + ":"  
-	                + currentdate.getMinutes() + ":" 
+	                + currentdate.getHours() + "."  
+	                + currentdate.getMinutes() + "." 
 	                + currentdate.getSeconds();
 	},
 	

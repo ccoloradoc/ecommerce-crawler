@@ -10,7 +10,7 @@ function Roboto(apiKey, chatId, debugMode) {
 Roboto.prototype = {
 	submit: function(message) {
 		if(this.debugMode) {
-			//console.log(" Submiting: ", message)
+			console.log(" Submiting: ", message)
 			return
 		}
 		request(this.url + '&text=' + encodeURI(message), function (err, response, body) {

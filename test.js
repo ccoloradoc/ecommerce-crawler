@@ -3,7 +3,7 @@ const request = require('request');
 const cron = require('node-cron');
 const Utils = require('./src/commons/utils')
 const Roboto = require('./src/roboto')
-const config = require('./config.json')
+const config = require('./config')
 
 const targets = Object.keys(config.targets)
 const processArgs = process.argv.slice(2);
@@ -122,23 +122,42 @@ function mergeMaps(maps) {
 	return mergedMaps
 }
 
+
 console.log('Starting cron for ', targetName, ' with schedule time: ', target.cron)
 cron.schedule(target.cron, () => {
   	console.log()
 	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
-	hitPage(target.url)
-		.then(Parser)
-		.then(updateInMemory)
-		.then(storeMap)
-		.then(itemsToCsv.bind(null, (timestamp) => {
-			return target.csv + timestamp + '.csv'
-		}))
+	Promise.all([
+		hitPage(target.url)
+			.then(Parser),
+		hitPage(target.url + '&page=2')
+			.then(Parser),
+		hitPage(target.url + '&page=3')
+			.then(Parser),
+		hitPage(target.url + '&page=4')
+			.then(Parser)
+	])
+	.then(mergeMaps)
+	.then(updateInMemory.bind(null, target.delta))
+	.then(storeMap)
+	.then(itemsToCsv.bind(null, (timestamp) => {
+		return target.csv + timestamp + '.csv'
+	}))
 });
-
-// hitPage(target.url)
-// 	.then(Parser)
-// 	.then(updateInMemory)
-// 	.then(storeMap)
-// 	.then(itemsToCsv.bind(null, (timestamp) => {
-// 		return target.csv + timestamp + '.csv'
-// 	}))
+	
+	// Promise.all([
+	// 	hitPage(target.url)
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=2')
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=3')
+	// 		.then(Parser),
+	// 	hitPage(target.url + '&page=4')
+	// 		.then(Parser)
+	// ])
+	// .then(mergeMaps)
+	// .then(updateInMemory.bind(null, target.delta))
+	// .then(storeMap)
+	// .then(itemsToCsv.bind(null, (timestamp) => {
+	// 	return target.csv + timestamp + '.csv'
+	// }))
