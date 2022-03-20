@@ -1,0 +1,25 @@
+{
+	"telegram": {
+		"apiKey": "your-robot-api",
+		"channel": "@your-channel",
+		"debugMode": false
+	},
+	"targets": {
+		"MercadolibreMarvelLegends": {
+			"name": "MercadolibreMarvelLegends",
+			"url": "https://listado.mercadolibre.com.mx/marvel-legends_Tienda_hasbro#D[A:marvel%20legends,on]",
+			"parser": "mercadolibre",
+			"csv": "./archive/marvel-legends-",
+			"json": "./archive/marvel-legends.json",
+			"cron": "0,15,30,45 * * * *"
+		},
+		"MercadolibreStarWars": {
+			"name": "MercadolibreStarWars",
+			"url": "https://listado.mercadolibre.com.mx/star-wars_Tienda_hasbro#D[A:star%20wars,on]",
+			"parser": "mercadolibre",
+			"csv": "./archive/star-wars-",
+			"json": "./archive/star-wars.json",
+			"cron": "10,25,40,55 * * * *"
+		}
+	}
+}
