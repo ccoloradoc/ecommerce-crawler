@@ -48,7 +48,9 @@ function hitPage(target) {
 
 function updateInMemory(delta, itemsMap) {
 	let messagesSubmited = 0
+	console.log('Processing ', Object.entries(itemsMap).length, ' elements')
 	Object.entries(itemsMap).forEach(([key, item]) => {
+		// console.log('Processing [', key, ']')
 		if(inMemoryMap.hasOwnProperty(key)) {
 			if(item.price == 0) {
 				console.log('	- SIN STOCK: ', item.title)
@@ -124,21 +126,21 @@ cron.schedule(target.cron, () => {
 	}))
 });
 
-	// Promise.all([
-	// 	hitPage(target.url)
-	// 		.then(Parser),
-	// 	hitPage(target.url + '&page=2')
-	// 		.then(Parser),
-	// 	hitPage(target.url + '&page=3')
-	// 		.then(Parser),
-	// 	hitPage(target.url + '&page=4')
-	// 		.then(Parser),
-	// 	hitPage(target.url + '&page=5')
-	// 		.then(Parser)
-	// ])
-	// .then(MapUtils.mergeMaps)
-	// .then(updateInMemory.bind(null, target.delta))
-	// .then(MapUtils.storeMap.bind(null, target.json))
-	// .then(MapUtils.itemsToCsv.bind(null, () => {
-	// 	return target.csv + Utils.printableNow() + '.csv'
-	// }))
+	Promise.all([
+		hitPage(target.url)
+			.then(Parser),
+		hitPage(target.url + '&page=2')
+			.then(Parser),
+		hitPage(target.url + '&page=3')
+			.then(Parser),
+		hitPage(target.url + '&page=4')
+			.then(Parser),
+		hitPage(target.url + '&page=5')
+			.then(Parser)
+	])
+	.then(MapUtils.mergeMaps)
+	.then(updateInMemory.bind(null, target.delta))
+	.then(MapUtils.storeMap.bind(null, target.json))
+	.then(MapUtils.itemsToCsv.bind(null, () => {
+		return target.csv + Utils.printableNow() + '.csv'
+	}))

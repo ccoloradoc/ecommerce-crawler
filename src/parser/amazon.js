@@ -36,6 +36,7 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				}
 			}
 	    })
+		console.log('Found ', Object.entries(itemsMap).length, ' elements')
 		resolve(itemsMap)
 	});
 }
