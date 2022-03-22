@@ -21,7 +21,10 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 	    	let price = $(node).find('.s-price-instructions-style .s-link-style .a-price:not(.a-text-price) .a-offscreen').text()
 			let link = $(node).find('.s-title-instructions-style .s-link-style').attr()['href']
 	    	let image = $(node).find('.s-product-image-container .s-image').attr()['src']	
-			if(isPromo == "" && price != "") {
+			if(price == "") {
+				price = "0"
+			}
+			if(isPromo == "") {
 				let id = parseId(link)
 				itemsMap[id] = {
 					id: id,

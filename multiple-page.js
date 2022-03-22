@@ -50,9 +50,23 @@ function updateInMemory(delta, itemsMap) {
 	let messagesSubmited = 0
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		if(inMemoryMap.hasOwnProperty(key)) {
-			if(inMemoryMap[key].price > item.price + delta) {
+			if(item.price == 0) {
+				console.log('	- SIN STOCK: ', item.title)
+			} else if(inMemoryMap[key].price == 0) {
 				let message = Utils.concatenate(
-					'El siguiente producto ha bajado de precio: ',
+					'NUEVO STOCK: El siguiente esta disponible: ',
+					item.title, 
+					' con un precio de $', item.price, ' ',
+					item.link
+				)
+				console.log('	- ', message)
+				if(messagesSubmited < 10) {
+					messagesSubmited++
+					roboto.submit(message)
+				}
+			} else if(inMemoryMap[key].price > item.price + delta) {
+				let message = Utils.concatenate(
+					'DEAL: El siguiente producto ha bajado de precio: ',
 					item.title, 
 					' de $', inMemoryMap[key].price, ' a $', item.price, ' ',
 					item.link
@@ -64,17 +78,22 @@ function updateInMemory(delta, itemsMap) {
 				}
 			}
 		} else {
-			let message = Utils.concatenate(
-				'El siguiente producto ha sido listado: ',
-				item.title, 
-				' con precio $', item.price, ' ',
-				item.link
-			)
-			console.log('	+ ', message)
-			if(messagesSubmited < 10) {
-				roboto.submit(message)
-				messagesSubmited++
+			if(item.price == 0) {
+				console.log('	- Sin existencia: ', item.title)
+			} else {
+				let message = Utils.concatenate(
+					'NUEVO: El siguiente producto ha sido listado: ',
+					item.title, 
+					' con precio $', item.price, ' ',
+					item.link
+				)
+				console.log('	+ ', message)
+				if(messagesSubmited < 10) {
+					roboto.submit(message)
+					messagesSubmited++
+				}
 			}
+			
 		}
 		inMemoryMap[key] = item
 	})
