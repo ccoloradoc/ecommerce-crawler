@@ -1,0 +1,3194 @@
+{
+	"@type": "PageSlot",
+	"name": "Dynamic Page Slot",
+	"redirectGroup": "/redirects/WMXGM",
+	"renderer": "page",
+	"contents": [{
+		"@type": "WMXThreeColumnPage",
+		"name": "WMX-Three-Column Page",
+		"metaArea": [{
+			"@type": "WMXManualSEO",
+			"name": "WMX Manual SEO Cartridge",
+			"title": "",
+			"metaKeywords": "",
+			"metaDescription": "",
+			"robots": "",
+			"pageSeoText": ""
+		}],
+		"breadCrumbsArea": [{
+			"rangeFilterCrumbs": [],
+			"renderer": "Breadcrumbs",
+			"searchCrumbs": [{
+				"removeAction": {
+					"contentPath": null,
+					"label": null,
+					"navigationState": "?Ntt=marvel+hasbro&page=0&size=48"
+				},
+				"key": "All",
+				"terms": "marvel hasbro",
+				"matchMode": "ALLPARTIAL",
+				"correctedTerms": null
+			}],
+			"geoFilterCrumb": null,
+			"@type": "WMXBreadcrumbs",
+			"name": "Breadcrumbs",
+			"removeAllAction": {
+				"contentPath": null,
+				"label": null,
+				"navigationState": "?Ntt=marvel+hasbro&page=0&size=48"
+			},
+			"refinementCrumbs": []
+		}],
+		"leftArea": [{
+			"@type": "ContentSlotSecondary",
+			"name": "Secondary Content Slot",
+			"renderer": "secondaryContent",
+			"contents": [{
+				"@type": "GuidedNavigation",
+				"name": "Navigation Container",
+				"navigation": [{
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Departamento",
+					"sort": "dynRank",
+					"dimensionName": "productDepartment"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Marca",
+					"sort": "static",
+					"dimensionName": "brandName"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Capacidad memoria RAM",
+					"sort": "static",
+					"dimensionName": "capacidad memoria ram"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Capacidad de almacenamiento",
+					"sort": "static",
+					"dimensionName": "capacidad de almacenamiento"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Color",
+					"sort": "static",
+					"dimensionName": "color"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Memoria Interna",
+					"sort": "static",
+					"dimensionName": "memoria interna"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Tamano de pantalla",
+					"sort": "static",
+					"dimensionName": "tamaño de pantalla"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Submarca",
+					"sort": "static",
+					"dimensionName": "subcategoría"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Resolucion",
+					"sort": "dynRank",
+					"dimensionName": "resolución"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "3D",
+					"sort": "static",
+					"dimensionName": "3d"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Capacidad",
+					"sort": "static",
+					"dimensionName": "capacidad"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Conectividad de red",
+					"sort": "static",
+					"dimensionName": "conectividad de red"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Frecuencia de actualizacion de imagen",
+					"sort": "static",
+					"dimensionName": "frecuencia"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Genero",
+					"sort": "static",
+					"dimensionName": "género"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Hilos",
+					"sort": "static",
+					"dimensionName": "hilos"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Material De Fabricacion",
+					"sort": "static",
+					"dimensionName": "material de fabricación"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Pais de origen",
+					"sort": "static",
+					"dimensionName": "país de origen o procedencia"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Sabor",
+					"sort": "static",
+					"dimensionName": "sabor"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Smart",
+					"sort": "static",
+					"dimensionName": "smart"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Tamaño",
+					"sort": "static",
+					"dimensionName": "tamaño"
+				}, {
+					"renderer": "refinementMenu",
+					"@type": "WMXRefinementMenu",
+					"name": "Tipo",
+					"sort": "static",
+					"dimensionName": "tipo"
+				}],
+				"renderer": "guidedNavigationContent"
+			}]
+		}],
+		"mainArea": [{
+			"renderer": "searchAdjustments",
+			"@type": "SearchAdjustments",
+			"name": "Search Adjustments",
+			"originalTerms": ["marvel hasbro"]
+		}, {
+			"@type": "WMXResultsList",
+			"name": "WMXResults List",
+			"boostStrata": [],
+			"renderer": "resultList",
+			"buryStrata": [],
+			"recordsPerPage": "10",
+			"bulkBoostPList": "",
+			"fineLineStrata": "",
+			"familyStrata": ""
+		}],
+		"renderer": "wmxThreeColumnPage",
+		"redirectGroup": ""
+	}],
+	"appendix": {
+		"searchTerms": "marvel hasbro",
+		"collatedResult": null,
+		"SearchResults": {
+			"content": [{
+				"id": "00501099398752",
+				"productId": "00501099398752",
+				"skuDisplayName": "Figura Hasbro Loki 6 Pulgadas - Marvel",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-hasbro-loki-6-pulgadas-marvel_00501099398752",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099398752s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099398752l.jpg"
+				},
+				"score": 49.07658386230469,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384266",
+				"productId": "00501099384266",
+				"skuDisplayName": "Figura Hasbro Surtur 6 Pulgadas - Marvel",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-hasbro-surtur-6-pulgadas-marvel_00501099384266",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 1519.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384266s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384266l.jpg"
+				},
+				"score": 49.07658386230469,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099383471",
+				"productId": "00501099383471",
+				"skuDisplayName": "Figura Dr. Doom Marvel Hasbro 5.9 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/figura-dr-doom-marvel-hasbro-5-9-pulgadas_00501099383471",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 899.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099383471s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099383471l.jpg"
+				},
+				"score": 76.82847595214844,
+				"salesRank": 9.698354677530117E-7,
+				"variants": []
+			}, {
+				"id": "00501099383465",
+				"productId": "00501099383465",
+				"skuDisplayName": "Figura Dormammu Marvel Hasbro 5.9 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-dormammu-marvel-hasbro-5-9-pulgadas_00501099383465",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 799.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099383465s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099383465l.jpg"
+				},
+				"score": 78.32474517822266,
+				"salesRank": 5.387974820850064E-7,
+				"variants": []
+			}, {
+				"id": "00501099398612",
+				"productId": "00501099398612",
+				"skuDisplayName": "Figura Hasbro Sam Wilson y Steve Rogers 6 Pulgadas - Marvel",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-hasbro-sam-wilson-y-steve-rogers-6-pulgadas-marvel_00501099398612",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 1249.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099398612s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099398612l.jpg"
+				},
+				"score": 47.51786804199219,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099385385",
+				"productId": "00501099385385",
+				"skuDisplayName": "Vehículo y Figura Hasbro Marvel Bólido Arácnido",
+				"productSeoUrl": "/juguetes/juguetes-preescolar/preescolar/vehiculo-y-figura-hasbro-marvel-bolido-aracnido_00501099385385",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 699.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099385385s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099385385l.jpg"
+				},
+				"score": 34.01685333251953,
+				"salesRank": 8.605493784701028E-6,
+				"variants": []
+			}, {
+				"id": "00501099384207",
+				"productId": "00501099384207",
+				"skuDisplayName": "Casco Marvel Hasbro Iron Spider",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/casco-marvel-hasbro-iron-spider_00501099384207",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 4536.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384207s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384207l.jpg"
+				},
+				"score": 75.2801513671875,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384252",
+				"productId": "00501099384252",
+				"skuDisplayName": "Figura Sr. Fantástico Marvel Hasbro 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-sr-fantastico-marvel-hasbro-6-pulgadas_00501099384252",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384252s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384252l.jpg"
+				},
+				"score": 72.20335388183594,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384469",
+				"productId": "00501099384469",
+				"skuDisplayName": "Figura Shriek Hasbro Marvel 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-shriek-hasbro-marvel-6-pulgadas_00501099384469",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 315.02,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384469s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384469l.jpg"
+				},
+				"score": 49.07658386230469,
+				"salesRank": 8.620759713360104E-7,
+				"variants": []
+			}, {
+				"id": "00063050974338",
+				"productId": "00063050974338",
+				"skuDisplayName": "Figura de Hulk Marvel Hasbro 9.8 Pulgadas",
+				"productSeoUrl": "/juguetes/juguetes-preescolar/preescolar/figura-de-hulk-marvel-hasbro-9-8-pulgadas_00063050974338",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 613.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00063050974338s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00063050974338l.jpg"
+				},
+				"score": 58.63990020751953,
+				"salesRank": 1.4336503002478548E-6,
+				"variantGroupId": "3678",
+				"variants": [{
+					"id": "00063050980794",
+					"url": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/hasbro-figura-iron-man-mega-mighties-playskool-hasbro-54568_00063050980794",
+					"displayText": "HASBRO FIGURA IRON MAN MEGA MIGHTIES PLAYSKOOL HASBRO 54568",
+					"smallImage": "/gm/3pp/asr/a79d1bb8-1e8c-4adc-8694-d071d2ed8fa4.ab00585c88b22facde48a89ec71d02d8.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"swatch": "/gm/3pp/asr/a79d1bb8-1e8c-4adc-8694-d071d2ed8fa4.ab00585c88b22facde48a89ec71d02d8.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"price": 613.0
+				}]
+			}, {
+				"id": "00501099393345",
+				"productId": "00501099393345",
+				"skuDisplayName": "Figura Hulk Hasbro Marvel 4 Pulgadas",
+				"productSeoUrl": "/d/f/l/figura-hulk-hasbro-marvel-4-pulgadas_00501099393345",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 359.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099393345s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099393345l.jpg"
+				},
+				"score": 34.01685333251953,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099393338",
+				"productId": "00501099393338",
+				"skuDisplayName": "Figura Hulk Hasbro Marvel 4 Pulgadas",
+				"productSeoUrl": "/d/f/l/figura-hulk-hasbro-marvel-4-pulgadas_00501099393338",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 149.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099393338s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099393338l.jpg"
+				},
+				"score": 34.01685333251953,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384426",
+				"productId": "00501099384426",
+				"skuDisplayName": "Set de Vehículos Hasbro Marvel Spiderman Arácnidos 3 piezas",
+				"productSeoUrl": "/juguetes/juguetes-preescolar/preescolar/set-de-vehiculos-hasbro-marvel-spiderman-aracnidos-3-piezas_00501099384426",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 349.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384426s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384426l.jpg"
+				},
+				"score": 32.95397186279297,
+				"salesRank": 3.882372606848775E-6,
+				"variants": []
+			}, {
+				"id": "00501099384255",
+				"productId": "00501099384255",
+				"skuDisplayName": "Figura Mujer Invisible Marvel Hasbro 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-mujer-invisible-marvel-hasbro-6-pulgadas_00501099384255",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384255s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384255l.jpg"
+				},
+				"score": 72.20335388183594,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00063050978029",
+				"productId": "00063050978029",
+				"skuDisplayName": "Figura Capitán Marvel Hasbro 11.5 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/figura-capitan-marvel-hasbro-11-5-pulgadas_00063050978029",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 679.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00063050978029s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00063050978029l.jpg"
+				},
+				"score": 72.15357208251953,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099379252",
+				"productId": "00501099379252",
+				"skuDisplayName": "Figura de M.O.D.O.K Hasbro Marvel 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-de-m-o-d-o-k-hasbro-marvel-6-pulgadas_00501099379252",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 1799.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099379252s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099379252l.jpg"
+				},
+				"score": 49.07658386230469,
+				"salesRank": 4.7142534692929374E-6,
+				"variants": []
+			}, {
+				"id": "00088725602459",
+				"productId": "00088725602459",
+				"skuDisplayName": "HASBRO FAMILY FUN PACK CONQUEST EDITION - PS4 Ubisoft PS4",
+				"productSeoUrl": "/videojuegos/nintendo/juegos/hasbro-family-fun-pack-conquest-edition-ps4-ubisoft-ps4_00088725602459",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 899.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "ubisoft",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/8890263f-c8a0-4971-ad7d-481479ac3faf.2d4f6515098b5ee09149f6001cb4f332.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/8890263f-c8a0-4971-ad7d-481479ac3faf.2d4f6515098b5ee09149f6001cb4f332.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 19.18470573425293,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099393341",
+				"productId": "00501099393341",
+				"skuDisplayName": "Figura Miles Morales Hasbro Marvel 9 Pulgadas",
+				"productSeoUrl": "/d/f/l/figura-miles-morales-hasbro-marvel-9-pulgadas_00501099393341",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 359.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099393341s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099393341l.jpg"
+				},
+				"score": 33.472957611083984,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099393337",
+				"productId": "00501099393337",
+				"skuDisplayName": "Figura Miles Morales Hasbro Marvel 2.5 Pulgadas",
+				"productSeoUrl": "/d/f/l/figura-miles-morales-hasbro-marvel-2-5-pulgadas_00501099393337",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 149.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099393337s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099393337l.jpg"
+				},
+				"score": 33.472957611083984,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099386047",
+				"productId": "00501099386047",
+				"skuDisplayName": "Set de Juego Hasbro Marvel Spidey Persecusión",
+				"productSeoUrl": "/juguetes/juguetes-preescolar/preescolar/set-de-juego-hasbro-marvel-spidey-persecusion_00501099386047",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 699.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099386047s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099386047l.jpg"
+				},
+				"score": 34.01685333251953,
+				"salesRank": 3.5452874321193426E-6,
+				"variants": []
+			}, {
+				"id": "00501099385342",
+				"productId": "00501099385342",
+				"skuDisplayName": "Figura Marvel Hasbro Spiderman 13 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-marvel-hasbro-spiderman-13-pulgadas_00501099385342",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 899.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099385342s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099385342l.jpg"
+				},
+				"score": 73.69963073730469,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384173",
+				"productId": "00501099384173",
+				"skuDisplayName": "Figura Hasbro Spiderman 13 Pulgadas - Marvel",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-hasbro-spiderman-13-pulgadas-marvel_00501099384173",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 839.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384173s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384173l.jpg"
+				},
+				"score": 49.07658386230469,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00019516612717",
+				"productId": "00019516612717",
+				"skuDisplayName": "Lanzador Hasbro Nerf Elite 2.0 Flip 16 Dardos",
+				"productSeoUrl": "/juguetes/lanzadores/lanzadores/lanzador-hasbro-nerf-elite-2-0-flip-16-dardos_00019516612717",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 926.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516612717s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516612717l.jpg"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 1.2923618855186051E-5,
+				"variants": []
+			}, {
+				"id": "00088725601538",
+				"productId": "00088725601538",
+				"skuDisplayName": "Hasbro Family Fun Pack - Xbox One Xbox One Game",
+				"productSeoUrl": "/videojuegos/xbox-one/juegos/hasbro-family-fun-pack-xbox-one-xbox-one-game_00088725601538",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 689.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "xbox one",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/8d2130b1-ddf1-4d8d-a57c-f91ad05e0d01.393a0154b3441b3c2d54fd4e9956ceee.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/8d2130b1-ddf1-4d8d-a57c-f91ad05e0d01.393a0154b3441b3c2d54fd4e9956ceee.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 19.6195125579834,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099384475",
+				"productId": "00501099384475",
+				"skuDisplayName": "Figura J. Jonah Jameson Hasbro Marvel 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-j-jonah-jameson-hasbro-marvel-6-pulgadas_00501099384475",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384475s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384475l.jpg"
+				},
+				"score": 48.013702392578125,
+				"salesRank": 1.2931139570040154E-6,
+				"variants": []
+			}, {
+				"id": "00019516615109",
+				"productId": "00019516615109",
+				"skuDisplayName": "Muñeca Moana Hasbro Disney Anaranjada",
+				"productSeoUrl": "/juguetes/munecas-y-peluches/munecas-de-moda/muneca-moana-hasbro-disney-anaranjada_00019516615109",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 499.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516615109s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516615109l.jpg"
+				},
+				"score": 23.89452362060547,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099388370",
+				"productId": "00501099388370",
+				"skuDisplayName": "Figura Hasbro Imperial Senate Guar 6 Pulgadas - Star Wars",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/figura-hasbro-imperial-senate-guar-6-pulgadas-star-wars_00501099388370",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 699.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099388370s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099388370l.jpg"
+				},
+				"score": 38.76543426513672,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00019516611457",
+				"productId": "00019516611457",
+				"skuDisplayName": "Lanzador Hasbro Nerf 16 Dardos Elite 2.0 Eaglepoint",
+				"productSeoUrl": "/juguetes/lanzadores/lanzadores/lanzador-hasbro-nerf-16-dardos-elite-2-0-eaglepoint_00019516611457",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516611457s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516611457l.jpg"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099378268",
+				"productId": "00501099378268",
+				"skuDisplayName": "Figura Star Wars Hasbro Jar Jar Binks  6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/figura-star-wars-hasbro-jar-jar-binks-6-pulgadas_00501099378268",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 445.02,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "star wars",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099378268s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099378268l.jpg"
+				},
+				"score": 18.957340240478516,
+				"salesRank": 1.8068461312245257E-5,
+				"variants": []
+			}, {
+				"id": "00501099393104",
+				"productId": "00501099393104",
+				"skuDisplayName": "Muñeca Rapunzel Hasbro Disney Rosa",
+				"productSeoUrl": "/juguetes/munecas-y-peluches/munecas-de-moda/muneca-rapunzel-hasbro-disney-rosa_00501099393104",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 499.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099393104s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099393104l.jpg"
+				},
+				"score": 23.89452362060547,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099386681",
+				"productId": "00501099386681",
+				"skuDisplayName": "Figura Pantera Negra y Ghost Spider Hasbro Marvel 4 Pulgadas",
+				"productSeoUrl": "/bebes/juguetes-y-estimulacion-temprana/centro-de-actividades-y-andaderas/figura-pantera-negra-y-ghost-spider-hasbro-marvel-4-pulgadas_00501099386681",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 269.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099386681s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099386681l.jpg"
+				},
+				"score": 32.45813751220703,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099387426",
+				"productId": "00501099387426",
+				"skuDisplayName": "Figura Hasbro Star Wars Vicealmirante Rampart 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-hasbro-star-wars-vicealmirante-rampart-6-pulgadas_00501099387426",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099387426s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099387426l.jpg"
+				},
+				"score": 38.76543426513672,
+				"salesRank": 9.048879212666815E-6,
+				"variants": []
+			}, {
+				"id": "00019516615133",
+				"productId": "00019516615133",
+				"skuDisplayName": "Lanzador Hasbro Nerf 3 Dardos Minecraft Schilling",
+				"productSeoUrl": "/juguetes/lanzadores/lanzadores/lanzador-hasbro-nerf-3-dardos-minecraft-schilling_00019516615133",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 519.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516615133s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516615133l.jpg"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00019516615135",
+				"productId": "00019516615135",
+				"skuDisplayName": "Lanzador Hasbro Nerf 3 Dardos Minecraft Carlton",
+				"productSeoUrl": "/juguetes/lanzadores/lanzadores/lanzador-hasbro-nerf-3-dardos-minecraft-carlton_00019516615135",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 699.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516615135s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516615135l.jpg"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00046909973861",
+				"productId": "00046909973861",
+				"skuDisplayName": "Hasbro POTF2 Luke Skywalker en traje ceremonial Kenner 76281696911",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/hasbro-potf2-luke-skywalker-en-traje-ceremonial-kenner-76281696911_00046909973861",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 809.05,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "kenner",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/3525db66-d449-4407-8f31-da224e902d51_1.8c0a759dfee5dbd2c4f00add4766e731.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/3525db66-d449-4407-8f31-da224e902d51_1.8c0a759dfee5dbd2c4f00add4766e731.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 19.6195125579834,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00063050932175",
+				"productId": "00063050932175",
+				"skuDisplayName": "Figura Tintan Hero Series Visions 3+ Hasbro B6533",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/figura-tintan-hero-series-visions-3-hasbro-b6533_00063050932175",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 260.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/17a5250d-adeb-42ed-98dd-f0162d7fbe65.055f5e038c64d1d03bb84f21ba32bd70.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/17a5250d-adeb-42ed-98dd-f0162d7fbe65.055f5e038c64d1d03bb84f21ba32bd70.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 2.1652923811291196E-7,
+				"variants": []
+			}, {
+				"id": "00501099368905",
+				"productId": "00501099368905",
+				"skuDisplayName": "Figura Peter Venkman Ghostbusters Hasbro 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-peter-venkman-ghostbusters-hasbro-6-pulgadas_00501099368905",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 499.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "ghostbusters",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099368905s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099368905l.jpg"
+				},
+				"score": 33.823795318603516,
+				"salesRank": 6.6000446565904604E-6,
+				"variants": []
+			}, {
+				"id": "00019516613034",
+				"productId": "00019516613034",
+				"skuDisplayName": "Juego de Mesa Hasbro Gaming Monopoly Crooked Cash",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/juego-de-mesa-hasbro-gaming-monopoly-crooked-cash_00019516613034",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 549.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516613034s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516613034l.jpg"
+				},
+				"score": 38.76543426513672,
+				"salesRank": 6.457712321739671E-7,
+				"variants": []
+			}, {
+				"id": "00501099384259",
+				"productId": "00501099384259",
+				"skuDisplayName": "Figura High Evolutionary Marvel Hasbro 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-high-evolutionary-marvel-hasbro-6-pulgadas_00501099384259",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099384259s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099384259l.jpg"
+				},
+				"score": 72.20335388183594,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099382977",
+				"productId": "00501099382977",
+				"skuDisplayName": "Máscara Hasbro Spiderman - Marvel",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/funko/mascara-hasbro-spiderman-marvel_00501099382977",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099382977s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099382977l.jpg"
+				},
+				"score": 50.24707794189453,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099383544",
+				"productId": "00501099383544",
+				"skuDisplayName": "Figura Star Wars Hasbro Koska Reeves 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-star-wars-hasbro-koska-reeves-6-pulgadas_00501099383544",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 599.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "star wars",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099383544s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099383544l.jpg"
+				},
+				"score": 29.624080657958984,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00088725603744",
+				"productId": "00088725603744",
+				"skuDisplayName": "Hasbro Game Night Nintendo Switch Juego",
+				"productSeoUrl": "/videojuegos/nintendo-switch/juegos/hasbro-game-night-nintendo-switch-juego_00088725603744",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 949.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "nintendo switch",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/dcd68797-98b9-4220-aeb4-b61790d714f0.ce1ddb64ed0c0adae3fade11ccad55ab.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/dcd68797-98b9-4220-aeb4-b61790d714f0.ce1ddb64ed0c0adae3fade11ccad55ab.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 21.050809860229492,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00501099378934",
+				"productId": "00501099378934",
+				"skuDisplayName": "Figura Marvel Capitán America 12 pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/figura-marvel-capitan-america-12-pulgadas_00501099378934",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 269.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "marvel",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099378934s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099378934l.jpg"
+				},
+				"score": 20.0621337890625,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00063050990797",
+				"productId": "00063050990797",
+				"skuDisplayName": "Monopoly Hasbro Hasbro Arcade",
+				"productSeoUrl": "/juguetes/juegos-de-mesa/juegos-de-mesa/monopoly-hasbro-hasbro-arcade_00063050990797",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 829.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00063050990797s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00063050990797l.jpg"
+				},
+				"score": 25.74799346923828,
+				"salesRank": 2.3514693610845763E-5,
+				"variants": []
+			}, {
+				"id": "00501099368902",
+				"productId": "00501099368902",
+				"skuDisplayName": "Figura Ray Stantz Ghostbusters Hasbro 6 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-ray-stantz-ghostbusters-hasbro-6-pulgadas_00501099368902",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 499.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "ghostbusters",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099368902s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099368902l.jpg"
+				},
+				"score": 33.823795318603516,
+				"salesRank": 5.118351580856693E-6,
+				"variants": []
+			}, {
+				"id": "00501099390121",
+				"productId": "00501099390121",
+				"skuDisplayName": "Figura Shoretrooper Hasbro Star Wars 3.75 Pulgadas",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/juguetes-de-coleccion/figura-shoretrooper-hasbro-star-wars-3-75-pulgadas_00501099390121",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 315.02,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00501099390121s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00501099390121l.jpg"
+				},
+				"score": 38.76543426513672,
+				"salesRank": 2.155189928340026E-7,
+				"variants": []
+			}, {
+				"id": "00046330868217",
+				"productId": "00046330868217",
+				"skuDisplayName": "X-Men Origins Wolverine Comic Series 3 3/4 pulgadas Figura de acción Iceman Hasbro 885919644121",
+				"productSeoUrl": "/juguetes/figuras-de-accion-y-coleccionables/figuras-de-accion/x-men-origins-wolverine-comic-series-3-3-4-pulgadas-figura-de-accion-iceman-hasbro-885919644121_00046330868217",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 1537.28,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/3pp/asr/9132238f-4a76-4a10-b92d-55d13bddf57d_1.8a76288f2591a311122f6cd5629f69b0.jpeg?odnHeight=180&odnWidth=180&odnBg=ffffff",
+					"large": "/gm/3pp/asr/9132238f-4a76-4a10-b92d-55d13bddf57d_1.8a76288f2591a311122f6cd5629f69b0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 0.0,
+				"variants": []
+			}, {
+				"id": "00019516615639",
+				"productId": "00019516615639",
+				"skuDisplayName": "Lanzador Hasbro Nerf 8 Piezas Elite 2.0 Prospect",
+				"productSeoUrl": "/juguetes/lanzadores/lanzadores/lanzador-hasbro-nerf-8-piezas-elite-2-0-prospect_00019516615639",
+				"productRatings": 0.0,
+				"weighable": false,
+				"freeShippingItem": "No Free Shipping",
+				"skuPrice": 199.0,
+				"bigItem": false,
+				"onDemand": false,
+				"bundle": false,
+				"preOrderable": false,
+				"pickUpEnabled": false,
+				"brandName": "hasbro",
+				"imageUrls": {
+					"small": "/gm/1p/images/product-images/img_small/00019516615639s.jpg",
+					"large": "/gm/1p/images/product-images/img_large/00019516615639l.jpg"
+				},
+				"score": 23.705703735351562,
+				"salesRank": 0.0,
+				"variants": []
+			}],
+			"pageable": {
+				"sort": {
+					"sorted": false,
+					"unsorted": true,
+					"empty": true
+				},
+				"offset": 0,
+				"pageNumber": 0,
+				"pageSize": 48,
+				"unpaged": false,
+				"paged": true
+			},
+			"facetResultPages": [],
+			"facetQueryResult": {
+				"content": [],
+				"pageable": "INSTANCE",
+				"totalElements": 0,
+				"totalPages": 1,
+				"last": true,
+				"sort": {
+					"sorted": false,
+					"unsorted": true,
+					"empty": true
+				},
+				"size": 0,
+				"number": 0,
+				"numberOfElements": 0,
+				"first": true,
+				"empty": true
+			},
+			"highlighted": [],
+			"maxScore": 78.324745,
+			"fieldStatsResults": {},
+			"suggestions": [],
+			"facets": {
+				"productDepartment": [{
+					"value": "Juguetes",
+					"query": "productDepartment:Juguetes",
+					"count": 292
+				}, {
+					"value": "Oficina y Papelería",
+					"query": "productDepartment:Oficina y Papelería",
+					"count": 39
+				}, {
+					"value": "Videojuegos",
+					"query": "productDepartment:Videojuegos",
+					"count": 30
+				}, {
+					"value": "Libros y Revistas",
+					"query": "productDepartment:Libros y Revistas",
+					"count": 27
+				}, {
+					"value": "Bebés",
+					"query": "productDepartment:Bebés",
+					"count": 23
+				}, {
+					"value": "Accesorios de Moda",
+					"query": "productDepartment:Accesorios de Moda",
+					"count": 20
+				}, {
+					"value": "Ropa para Hombre",
+					"query": "productDepartment:Ropa para Hombre",
+					"count": 10
+				}, {
+					"value": "Ropa para Niños",
+					"query": "productDepartment:Ropa para Niños",
+					"count": 10
+				}, {
+					"value": "Deportes",
+					"query": "productDepartment:Deportes",
+					"count": 9
+				}, {
+					"value": "Disfraces",
+					"query": "productDepartment:Disfraces",
+					"count": 7
+				}, {
+					"value": "Cuidado de la Salud",
+					"query": "productDepartment:Cuidado de la Salud",
+					"count": 5
+				}, {
+					"value": "Colchones y Blancos",
+					"query": "productDepartment:Colchones y Blancos",
+					"count": 4
+				}, {
+					"value": "Ropa para Mujer",
+					"query": "productDepartment:Ropa para Mujer",
+					"count": 4
+				}, {
+					"value": "Audio",
+					"query": "productDepartment:Audio",
+					"count": 3
+				}, {
+					"value": "Cocina y Hogar",
+					"query": "productDepartment:Cocina y Hogar",
+					"count": 3
+				}, {
+					"value": "Muebles",
+					"query": "productDepartment:Muebles",
+					"count": 3
+				}, {
+					"value": "Zapatos para Niños",
+					"query": "productDepartment:Zapatos para Niños",
+					"count": 3
+				}, {
+					"value": "Belleza y Cuidado Personal",
+					"query": "productDepartment:Belleza y Cuidado Personal",
+					"count": 2
+				}, {
+					"value": "Celulares",
+					"query": "productDepartment:Celulares",
+					"count": 2
+				}, {
+					"value": "Zapatos para Hombre",
+					"query": "productDepartment:Zapatos para Hombre",
+					"count": 2
+				}, {
+					"value": "Ferretería",
+					"query": "productDepartment:Ferretería",
+					"count": 1
+				}, {
+					"value": "Fotografía",
+					"query": "productDepartment:Fotografía",
+					"count": 1
+				}, {
+					"value": "Patio y Jardín",
+					"query": "productDepartment:Patio y Jardín",
+					"count": 1
+				}, {
+					"value": "Zapatos para Mujer",
+					"query": "productDepartment:Zapatos para Mujer",
+					"count": 1
+				}],
+				"brandName": [{
+					"value": "3ds",
+					"query": "brandName:3ds",
+					"count": 1
+				}, {
+					"value": "4d cityscape",
+					"query": "brandName:4d cityscape",
+					"count": 1
+				}, {
+					"value": "aby style",
+					"query": "brandName:aby style",
+					"count": 1
+				}, {
+					"value": "adidas",
+					"query": "brandName:adidas",
+					"count": 3
+				}, {
+					"value": "alola vulpix",
+					"query": "brandName:alola vulpix",
+					"count": 1
+				}, {
+					"value": "antman",
+					"query": "brandName:antman",
+					"count": 1
+				}, {
+					"value": "antsy labs",
+					"query": "brandName:antsy labs",
+					"count": 1
+				}, {
+					"value": "atmpacks",
+					"query": "brandName:atmpacks",
+					"count": 3
+				}, {
+					"value": "aurimoda",
+					"query": "brandName:aurimoda",
+					"count": 6
+				}, {
+					"value": "avengers",
+					"query": "brandName:avengers",
+					"count": 1
+				}, {
+					"value": "avengers halloween",
+					"query": "brandName:avengers halloween",
+					"count": 3
+				}, {
+					"value": "b. designs",
+					"query": "brandName:b. designs",
+					"count": 1
+				}, {
+					"value": "baby alive",
+					"query": "brandName:baby alive",
+					"count": 6
+				}, {
+					"value": "barbie",
+					"query": "brandName:barbie",
+					"count": 1
+				}, {
+					"value": "beast kingdom",
+					"query": "brandName:beast kingdom",
+					"count": 4
+				}, {
+					"value": "beyblade",
+					"query": "brandName:beyblade",
+					"count": 1
+				}, {
+					"value": "bitty boomers",
+					"query": "brandName:bitty boomers",
+					"count": 2
+				}, {
+					"value": "blip kids",
+					"query": "brandName:blip kids",
+					"count": 10
+				}, {
+					"value": "board games big pota",
+					"query": "brandName:board games big pota",
+					"count": 1
+				}, {
+					"value": "bobble bots",
+					"query": "brandName:bobble bots",
+					"count": 1
+				}, {
+					"value": "canvas lab",
+					"query": "brandName:canvas lab",
+					"count": 134
+				}, {
+					"value": "capcom",
+					"query": "brandName:capcom",
+					"count": 1
+				}, {
+					"value": "citizen",
+					"query": "brandName:citizen",
+					"count": 5
+				}, {
+					"value": "dark horse deluxe",
+					"query": "brandName:dark horse deluxe",
+					"count": 1
+				}, {
+					"value": "deadpool",
+					"query": "brandName:deadpool",
+					"count": 1
+				}, {
+					"value": "diamond select",
+					"query": "brandName:diamond select",
+					"count": 1
+				}, {
+					"value": "disney",
+					"query": "brandName:disney",
+					"count": 6
+				}, {
+					"value": "disney girls",
+					"query": "brandName:disney girls",
+					"count": 2
+				}, {
+					"value": "disney princess",
+					"query": "brandName:disney princess",
+					"count": 1
+				}, {
+					"value": "dk publishing (dorling kindersley)",
+					"query": "brandName:dk publishing (dorling kindersley)",
+					"count": 1
+				}, {
+					"value": "dorling kindersley",
+					"query": "brandName:dorling kindersley",
+					"count": 3
+				}, {
+					"value": "editorial televisa",
+					"query": "brandName:editorial televisa",
+					"count": 1
+				}, {
+					"value": "funk pop",
+					"query": "brandName:funk pop",
+					"count": 1
+				}, {
+					"value": "funko",
+					"query": "brandName:funko",
+					"count": 86
+				}, {
+					"value": "funko pop",
+					"query": "brandName:funko pop",
+					"count": 1
+				}, {
+					"value": "g. i. joe",
+					"query": "brandName:g. i. joe",
+					"count": 2
+				}, {
+					"value": "games workshop",
+					"query": "brandName:games workshop",
+					"count": 1
+				}, {
+					"value": "gandhi",
+					"query": "brandName:gandhi",
+					"count": 4
+				}, {
+					"value": "ghostbusters",
+					"query": "brandName:ghostbusters",
+					"count": 4
+				}, {
+					"value": "half moon",
+					"query": "brandName:half moon",
+					"count": 2
+				}, {
+					"value": "halloween",
+					"query": "brandName:halloween",
+					"count": 1
+				}, {
+					"value": "handy laundry",
+					"query": "brandName:handy laundry",
+					"count": 1
+				}, {
+					"value": "hardhead",
+					"query": "brandName:hardhead",
+					"count": 1
+				}, {
+					"value": "hasbro",
+					"query": "brandName:hasbro",
+					"count": 135
+				}, {
+					"value": "hasbro gaming",
+					"query": "brandName:hasbro gaming",
+					"count": 6
+				}, {
+					"value": "hasbro nbc at home entertainment",
+					"query": "brandName:hasbro nbc at home entertainment",
+					"count": 1
+				}, {
+					"value": "hasbro over japan",
+					"query": "brandName:hasbro over japan",
+					"count": 1
+				}, {
+					"value": "hasbro toy group",
+					"query": "brandName:hasbro toy group",
+					"count": 1
+				}, {
+					"value": "hasbro toys",
+					"query": "brandName:hasbro toys",
+					"count": 1
+				}, {
+					"value": "heroclix",
+					"query": "brandName:heroclix",
+					"count": 1
+				}, {
+					"value": "heroina marvel halloween",
+					"query": "brandName:heroina marvel halloween",
+					"count": 1
+				}, {
+					"value": "i home",
+					"query": "brandName:i home",
+					"count": 2
+				}, {
+					"value": "idea nuova",
+					"query": "brandName:idea nuova",
+					"count": 1
+				}, {
+					"value": "incógnita",
+					"query": "brandName:incógnita",
+					"count": 1
+				}, {
+					"value": "iron studios",
+					"query": "brandName:iron studios",
+					"count": 4
+				}, {
+					"value": "jazwares",
+					"query": "brandName:jazwares",
+					"count": 2
+				}, {
+					"value": "jenga",
+					"query": "brandName:jenga",
+					"count": 1
+				}, {
+					"value": "jormftte",
+					"query": "brandName:jormftte",
+					"count": 1
+				}, {
+					"value": "kenner",
+					"query": "brandName:kenner",
+					"count": 1
+				}, {
+					"value": "kidsdesing",
+					"query": "brandName:kidsdesing",
+					"count": 1
+				}, {
+					"value": "legends, l.p.",
+					"query": "brandName:legends%2G l.p.",
+					"count": 1
+				}, {
+					"value": "lego",
+					"query": "brandName:lego",
+					"count": 11
+				}, {
+					"value": "loungefly",
+					"query": "brandName:loungefly",
+					"count": 1
+				}, {
+					"value": "loz",
+					"query": "brandName:loz",
+					"count": 1
+				}, {
+					"value": "lush decor",
+					"query": "brandName:lush decor",
+					"count": 2
+				}, {
+					"value": "marvel",
+					"query": "brandName:marvel",
+					"count": 76
+				}, {
+					"value": "marvel avengers halloween",
+					"query": "brandName:marvel avengers halloween",
+					"count": 4
+				}, {
+					"value": "marvel avengers superheroes",
+					"query": "brandName:marvel avengers superheroes",
+					"count": 1
+				}, {
+					"value": "marvel comics",
+					"query": "brandName:marvel comics",
+					"count": 1
+				}, {
+					"value": "marvel comics halloween",
+					"query": "brandName:marvel comics halloween",
+					"count": 1
+				}, {
+					"value": "marvel education",
+					"query": "brandName:marvel education",
+					"count": 1
+				}, {
+					"value": "marvel halloween",
+					"query": "brandName:marvel halloween",
+					"count": 2
+				}, {
+					"value": "marvel studios",
+					"query": "brandName:marvel studios",
+					"count": 2
+				}, {
+					"value": "marvel superheroes halloween",
+					"query": "brandName:marvel superheroes halloween",
+					"count": 1
+				}, {
+					"value": "maximus",
+					"query": "brandName:maximus",
+					"count": 12
+				}, {
+					"value": "mini",
+					"query": "brandName:mini",
+					"count": 1
+				}, {
+					"value": "monopoly",
+					"query": "brandName:monopoly",
+					"count": 5
+				}, {
+					"value": "my little pony",
+					"query": "brandName:my little pony",
+					"count": 1
+				}, {
+					"value": "neca",
+					"query": "brandName:neca",
+					"count": 3
+				}, {
+					"value": "nerf",
+					"query": "brandName:nerf",
+					"count": 8
+				}, {
+					"value": "nintendo",
+					"query": "brandName:nintendo",
+					"count": 3
+				}, {
+					"value": "nintendo switch",
+					"query": "brandName:nintendo switch",
+					"count": 4
+				}, {
+					"value": "novelty",
+					"query": "brandName:novelty",
+					"count": 12
+				}, {
+					"value": "oem",
+					"query": "brandName:oem",
+					"count": 1
+				}, {
+					"value": "panam",
+					"query": "brandName:panam",
+					"count": 3
+				}, {
+					"value": "pantheon",
+					"query": "brandName:pantheon",
+					"count": 1
+				}, {
+					"value": "phidal publishing",
+					"query": "brandName:phidal publishing",
+					"count": 1
+				}, {
+					"value": "planeta",
+					"query": "brandName:planeta",
+					"count": 1
+				}, {
+					"value": "planeta infantil mexico",
+					"query": "brandName:planeta infantil mexico",
+					"count": 4
+				}, {
+					"value": "planeta junior",
+					"query": "brandName:planeta junior",
+					"count": 3
+				}, {
+					"value": "planeta mexico",
+					"query": "brandName:planeta mexico",
+					"count": 1
+				}, {
+					"value": "play doh",
+					"query": "brandName:play doh",
+					"count": 1
+				}, {
+					"value": "play station 4",
+					"query": "brandName:play station 4",
+					"count": 1
+				}, {
+					"value": "play-doh",
+					"query": "brandName:play-doh",
+					"count": 2
+				}, {
+					"value": "playstation",
+					"query": "brandName:playstation",
+					"count": 1
+				}, {
+					"value": "playstation 4",
+					"query": "brandName:playstation 4",
+					"count": 4
+				}, {
+					"value": "powe",
+					"query": "brandName:powe",
+					"count": 2
+				}, {
+					"value": "ps4",
+					"query": "brandName:ps4",
+					"count": 2
+				}, {
+					"value": "pyramid",
+					"query": "brandName:pyramid",
+					"count": 1
+				}, {
+					"value": "quantum mechanix marvel",
+					"query": "brandName:quantum mechanix marvel",
+					"count": 1
+				}, {
+					"value": "rock candy",
+					"query": "brandName:rock candy",
+					"count": 1
+				}, {
+					"value": "roden",
+					"query": "brandName:roden",
+					"count": 1
+				}, {
+					"value": "rubies",
+					"query": "brandName:rubies",
+					"count": 10
+				}, {
+					"value": "ruz",
+					"query": "brandName:ruz",
+					"count": 1
+				}, {
+					"value": "sakar",
+					"query": "brandName:sakar",
+					"count": 1
+				}, {
+					"value": "screenlife",
+					"query": "brandName:screenlife",
+					"count": 1
+				}, {
+					"value": "sky collection baja",
+					"query": "brandName:sky collection baja",
+					"count": 2
+				}, {
+					"value": "spider-man",
+					"query": "brandName:spider-man",
+					"count": 1
+				}, {
+					"value": "spin master",
+					"query": "brandName:spin master",
+					"count": 1
+				}, {
+					"value": "square enix",
+					"query": "brandName:square enix",
+					"count": 1
+				}, {
+					"value": "sr. cara de papa",
+					"query": "brandName:sr. cara de papa",
+					"count": 1
+				}, {
+					"value": "star wars",
+					"query": "brandName:star wars",
+					"count": 11
+				}, {
+					"value": "sunnimix",
+					"query": "brandName:sunnimix",
+					"count": 3
+				}, {
+					"value": "super hero mashers",
+					"query": "brandName:super hero mashers",
+					"count": 1
+				}, {
+					"value": "super hero squad",
+					"query": "brandName:super hero squad",
+					"count": 1
+				}, {
+					"value": "superheroes marvel halloween",
+					"query": "brandName:superheroes marvel halloween",
+					"count": 1
+				}, {
+					"value": "toy biz",
+					"query": "brandName:toy biz",
+					"count": 1
+				}, {
+					"value": "transformers",
+					"query": "brandName:transformers",
+					"count": 1
+				}, {
+					"value": "ubisoft",
+					"query": "brandName:ubisoft",
+					"count": 1
+				}, {
+					"value": "upper deck",
+					"query": "brandName:upper deck",
+					"count": 1
+				}, {
+					"value": "vivitar",
+					"query": "brandName:vivitar",
+					"count": 1
+				}, {
+					"value": "voit",
+					"query": "brandName:voit",
+					"count": 5
+				}, {
+					"value": "warner bros. games",
+					"query": "brandName:warner bros. games",
+					"count": 1
+				}, {
+					"value": "wb games",
+					"query": "brandName:wb games",
+					"count": 2
+				}, {
+					"value": "wizkids",
+					"query": "brandName:wizkids",
+					"count": 4
+				}, {
+					"value": "xbox one",
+					"query": "brandName:xbox one",
+					"count": 7
+				}],
+				"color": [{
+					"value": "acero inox",
+					"query": "facet_color:acero inox",
+					"count": 5
+				}, {
+					"value": "amarillo",
+					"query": "facet_color:amarillo",
+					"count": 16
+				}, {
+					"value": "anaranjado",
+					"query": "facet_color:anaranjado",
+					"count": 3
+				}, {
+					"value": "aqua",
+					"query": "facet_color:aqua",
+					"count": 9
+				}, {
+					"value": "armada",
+					"query": "facet_color:armada",
+					"count": 4
+				}, {
+					"value": "as the picture",
+					"query": "facet_color:as the picture",
+					"count": 1
+				}, {
+					"value": "azul",
+					"query": "facet_color:azul",
+					"count": 59
+				}, {
+					"value": "azul, rojo y negro",
+					"query": "facet_color:azul%2G rojo y negro",
+					"count": 1
+				}, {
+					"value": "blanco",
+					"query": "facet_color:blanco",
+					"count": 10
+				}, {
+					"value": "cafe",
+					"query": "facet_color:cafe",
+					"count": 2
+				}, {
+					"value": "café",
+					"query": "facet_color:café",
+					"count": 5
+				}, {
+					"value": "capitan america",
+					"query": "facet_color:capitan america",
+					"count": 1
+				}, {
+					"value": "dorado",
+					"query": "facet_color:dorado",
+					"count": 1
+				}, {
+					"value": "gris",
+					"query": "facet_color:gris",
+					"count": 13
+				}, {
+					"value": "morado",
+					"query": "facet_color:morado",
+					"count": 9
+				}, {
+					"value": "mullti",
+					"query": "facet_color:mullti",
+					"count": 1
+				}, {
+					"value": "multi",
+					"query": "facet_color:multi",
+					"count": 39
+				}, {
+					"value": "multi color",
+					"query": "facet_color:multi color",
+					"count": 218
+				}, {
+					"value": "na",
+					"query": "facet_color:na",
+					"count": 10
+				}, {
+					"value": "naranja",
+					"query": "facet_color:naranja",
+					"count": 2
+				}, {
+					"value": "nego",
+					"query": "facet_color:nego",
+					"count": 1
+				}, {
+					"value": "negro",
+					"query": "facet_color:negro",
+					"count": 32
+				}, {
+					"value": "negro/azul",
+					"query": "facet_color:negro/azul",
+					"count": 1
+				}, {
+					"value": "original",
+					"query": "facet_color:original",
+					"count": 2
+				}, {
+					"value": "plata",
+					"query": "facet_color:plata",
+					"count": 1
+				}, {
+					"value": "plateado",
+					"query": "facet_color:plateado",
+					"count": 4
+				}, {
+					"value": "rojo",
+					"query": "facet_color:rojo",
+					"count": 41
+				}, {
+					"value": "rojo morado azul",
+					"query": "facet_color:rojo morado azul",
+					"count": 1
+				}, {
+					"value": "rosa",
+					"query": "facet_color:rosa",
+					"count": 8
+				}, {
+					"value": "tal como se describe",
+					"query": "facet_color:tal como se describe",
+					"count": 1
+				}, {
+					"value": "transparente",
+					"query": "facet_color:transparente",
+					"count": 6
+				}, {
+					"value": "trasnparente",
+					"query": "facet_color:trasnparente",
+					"count": 2
+				}, {
+					"value": "varios",
+					"query": "facet_color:varios",
+					"count": 3
+				}, {
+					"value": "verde",
+					"query": "facet_color:verde",
+					"count": 13
+				}],
+				"tamaño de pantalla": [{
+					"value": "0 pulgadas",
+					"query": "facet_tamaño de pantalla:0 pulgadas",
+					"count": 17
+				}, {
+					"value": "0.00 pulgadas",
+					"query": "facet_tamaño de pantalla:0.00 pulgadas",
+					"count": 11
+				}, {
+					"value": "0.00\" pulgadas",
+					"query": "facet_tamaño de pantalla:0.00\" pulgadas",
+					"count": 4
+				}, {
+					"value": "1 pulgadas",
+					"query": "facet_tamaño de pantalla:1 pulgadas",
+					"count": 3
+				}, {
+					"value": "1.00 pulgadas",
+					"query": "facet_tamaño de pantalla:1.00 pulgadas",
+					"count": 3
+				}, {
+					"value": "3.00 pulgadas",
+					"query": "facet_tamaño de pantalla:3.00 pulgadas",
+					"count": 2
+				}, {
+					"value": "9.80 pulgadas",
+					"query": "facet_tamaño de pantalla:9.80 pulgadas",
+					"count": 24
+				}],
+				"género": [{
+					"value": "acción",
+					"query": "facet_género:acción",
+					"count": 2
+				}, {
+					"value": "aventura",
+					"query": "facet_género:aventura",
+					"count": 2
+				}, {
+					"value": "hombre",
+					"query": "facet_género:hombre",
+					"count": 22
+				}, {
+					"value": "masculino",
+					"query": "facet_género:masculino",
+					"count": 1
+				}, {
+					"value": "mujer",
+					"query": "facet_género:mujer",
+					"count": 12
+				}, {
+					"value": "niña",
+					"query": "facet_género:niña",
+					"count": 17
+				}, {
+					"value": "niño",
+					"query": "facet_género:niño",
+					"count": 103
+				}, {
+					"value": "niños",
+					"query": "facet_género:niños",
+					"count": 3
+				}, {
+					"value": "unisex",
+					"query": "facet_género:unisex",
+					"count": 319
+				}],
+				"material de fabricación": [{
+					"value": "100% plastico",
+					"query": "facet_material de fabricación:100% plastico",
+					"count": 1
+				}, {
+					"value": "100% plástico",
+					"query": "facet_material de fabricación:100% plástico",
+					"count": 4
+				}, {
+					"value": "algodón",
+					"query": "facet_material de fabricación:algodón",
+					"count": 8
+				}, {
+					"value": "cerámica",
+					"query": "facet_material de fabricación:cerámica",
+					"count": 1
+				}, {
+					"value": "fibra de coco",
+					"query": "facet_material de fabricación:fibra de coco",
+					"count": 1
+				}, {
+					"value": "funda: 100% poliéster, relleno: 100% espuma de poliuretano",
+					"query": "facet_material de fabricación:funda: 100% poliéster%2G relleno: 100% espuma de poliuretano",
+					"count": 2
+				}, {
+					"value": "metal",
+					"query": "facet_material de fabricación:metal",
+					"count": 1
+				}, {
+					"value": "plástico",
+					"query": "facet_material de fabricación:plástico",
+					"count": 34
+				}, {
+					"value": "silicón",
+					"query": "facet_material de fabricación:silicón",
+					"count": 5
+				}],
+				"tamaño": [{
+					"value": "-",
+					"query": "facet_tamaño:-",
+					"count": 13
+				}, {
+					"value": "1",
+					"query": "facet_tamaño:1",
+					"count": 12
+				}, {
+					"value": "1.71 mts a 2.09 mts",
+					"query": "facet_tamaño:1.71 mts a 2.09 mts",
+					"count": 1
+				}, {
+					"value": "10 pulgadas",
+					"query": "facet_tamaño:10 pulgadas",
+					"count": 2
+				}, {
+					"value": "11.8 pulgadas",
+					"query": "facet_tamaño:11.8 pulgadas",
+					"count": 2
+				}, {
+					"value": "12 pulgadas",
+					"query": "facet_tamaño:12 pulgadas",
+					"count": 5
+				}, {
+					"value": "3 pulgadas",
+					"query": "facet_tamaño:3 pulgadas",
+					"count": 4
+				}, {
+					"value": "3.7 pulgadas",
+					"query": "facet_tamaño:3.7 pulgadas",
+					"count": 2
+				}, {
+					"value": "3.74 pulgadas",
+					"query": "facet_tamaño:3.74 pulgadas",
+					"count": 1
+				}, {
+					"value": "3.75 pulgadas",
+					"query": "facet_tamaño:3.75 pulgadas",
+					"count": 1
+				}, {
+					"value": "4 pulgadas",
+					"query": "facet_tamaño:4 pulgadas",
+					"count": 4
+				}, {
+					"value": "5.9 pulgadas",
+					"query": "facet_tamaño:5.9 pulgadas",
+					"count": 2
+				}, {
+					"value": "6 pulgadas",
+					"query": "facet_tamaño:6 pulgadas",
+					"count": 15
+				}, {
+					"value": "adulto",
+					"query": "facet_tamaño:adulto",
+					"count": 5
+				}, {
+					"value": "de 18 a 50 cms",
+					"query": "facet_tamaño:de 18 a 50 cms",
+					"count": 8
+				}, {
+					"value": "menos de 5 pulgadas",
+					"query": "facet_tamaño:menos de 5 pulgadas",
+					"count": 1
+				}, {
+					"value": "más de 10 pulgadas",
+					"query": "facet_tamaño:más de 10 pulgadas",
+					"count": 3
+				}, {
+					"value": "talla única",
+					"query": "facet_tamaño:talla única",
+					"count": 1
+				}],
+				"tipo": [{
+					"value": "juego completo",
+					"query": "facet_tipo:juego completo",
+					"count": 29
+				}, {
+					"value": "pase de temporada",
+					"query": "facet_tipo:pase de temporada",
+					"count": 1
+				}]
+			},
+			"collatedResult": null,
+			"priceRange": {
+				"minPrice": 49.0,
+				"maxPrice": 50533.0,
+				"ranges": [{
+					"start": 0,
+					"end": 15000,
+					"selected": false
+				}, {
+					"start": 15000,
+					"end": 30000,
+					"selected": false
+				}, {
+					"start": 30000,
+					"end": 55000,
+					"selected": false
+				}],
+				"customRange": {},
+				"roundBase": 5000
+			},
+			"shouldIgnoreContent": false,
+			"allFacetField": {
+				"productDepartment": [{
+					"value": "Juguetes",
+					"query": "productDepartment:Juguetes",
+					"count": 292
+				}, {
+					"value": "Oficina y Papelería",
+					"query": "productDepartment:Oficina y Papelería",
+					"count": 39
+				}, {
+					"value": "Videojuegos",
+					"query": "productDepartment:Videojuegos",
+					"count": 30
+				}, {
+					"value": "Libros y Revistas",
+					"query": "productDepartment:Libros y Revistas",
+					"count": 27
+				}, {
+					"value": "Bebés",
+					"query": "productDepartment:Bebés",
+					"count": 23
+				}, {
+					"value": "Accesorios de Moda",
+					"query": "productDepartment:Accesorios de Moda",
+					"count": 20
+				}, {
+					"value": "Ropa para Hombre",
+					"query": "productDepartment:Ropa para Hombre",
+					"count": 10
+				}, {
+					"value": "Ropa para Niños",
+					"query": "productDepartment:Ropa para Niños",
+					"count": 10
+				}, {
+					"value": "Deportes",
+					"query": "productDepartment:Deportes",
+					"count": 9
+				}, {
+					"value": "Disfraces",
+					"query": "productDepartment:Disfraces",
+					"count": 7
+				}, {
+					"value": "Cuidado de la Salud",
+					"query": "productDepartment:Cuidado de la Salud",
+					"count": 5
+				}, {
+					"value": "Colchones y Blancos",
+					"query": "productDepartment:Colchones y Blancos",
+					"count": 4
+				}, {
+					"value": "Ropa para Mujer",
+					"query": "productDepartment:Ropa para Mujer",
+					"count": 4
+				}, {
+					"value": "Audio",
+					"query": "productDepartment:Audio",
+					"count": 3
+				}, {
+					"value": "Cocina y Hogar",
+					"query": "productDepartment:Cocina y Hogar",
+					"count": 3
+				}, {
+					"value": "Muebles",
+					"query": "productDepartment:Muebles",
+					"count": 3
+				}, {
+					"value": "Zapatos para Niños",
+					"query": "productDepartment:Zapatos para Niños",
+					"count": 3
+				}, {
+					"value": "Belleza y Cuidado Personal",
+					"query": "productDepartment:Belleza y Cuidado Personal",
+					"count": 2
+				}, {
+					"value": "Celulares",
+					"query": "productDepartment:Celulares",
+					"count": 2
+				}, {
+					"value": "Zapatos para Hombre",
+					"query": "productDepartment:Zapatos para Hombre",
+					"count": 2
+				}, {
+					"value": "Ferretería",
+					"query": "productDepartment:Ferretería",
+					"count": 1
+				}, {
+					"value": "Fotografía",
+					"query": "productDepartment:Fotografía",
+					"count": 1
+				}, {
+					"value": "Patio y Jardín",
+					"query": "productDepartment:Patio y Jardín",
+					"count": 1
+				}, {
+					"value": "Zapatos para Mujer",
+					"query": "productDepartment:Zapatos para Mujer",
+					"count": 1
+				}],
+				"brandName": [{
+					"value": "3ds",
+					"query": "brandName:3ds",
+					"count": 1
+				}, {
+					"value": "4d cityscape",
+					"query": "brandName:4d cityscape",
+					"count": 1
+				}, {
+					"value": "aby style",
+					"query": "brandName:aby style",
+					"count": 1
+				}, {
+					"value": "adidas",
+					"query": "brandName:adidas",
+					"count": 3
+				}, {
+					"value": "alola vulpix",
+					"query": "brandName:alola vulpix",
+					"count": 1
+				}, {
+					"value": "antman",
+					"query": "brandName:antman",
+					"count": 1
+				}, {
+					"value": "antsy labs",
+					"query": "brandName:antsy labs",
+					"count": 1
+				}, {
+					"value": "atmpacks",
+					"query": "brandName:atmpacks",
+					"count": 3
+				}, {
+					"value": "aurimoda",
+					"query": "brandName:aurimoda",
+					"count": 6
+				}, {
+					"value": "avengers",
+					"query": "brandName:avengers",
+					"count": 1
+				}, {
+					"value": "avengers halloween",
+					"query": "brandName:avengers halloween",
+					"count": 3
+				}, {
+					"value": "b. designs",
+					"query": "brandName:b. designs",
+					"count": 1
+				}, {
+					"value": "baby alive",
+					"query": "brandName:baby alive",
+					"count": 6
+				}, {
+					"value": "barbie",
+					"query": "brandName:barbie",
+					"count": 1
+				}, {
+					"value": "beast kingdom",
+					"query": "brandName:beast kingdom",
+					"count": 4
+				}, {
+					"value": "beyblade",
+					"query": "brandName:beyblade",
+					"count": 1
+				}, {
+					"value": "bitty boomers",
+					"query": "brandName:bitty boomers",
+					"count": 2
+				}, {
+					"value": "blip kids",
+					"query": "brandName:blip kids",
+					"count": 10
+				}, {
+					"value": "board games big pota",
+					"query": "brandName:board games big pota",
+					"count": 1
+				}, {
+					"value": "bobble bots",
+					"query": "brandName:bobble bots",
+					"count": 1
+				}, {
+					"value": "canvas lab",
+					"query": "brandName:canvas lab",
+					"count": 134
+				}, {
+					"value": "capcom",
+					"query": "brandName:capcom",
+					"count": 1
+				}, {
+					"value": "citizen",
+					"query": "brandName:citizen",
+					"count": 5
+				}, {
+					"value": "dark horse deluxe",
+					"query": "brandName:dark horse deluxe",
+					"count": 1
+				}, {
+					"value": "deadpool",
+					"query": "brandName:deadpool",
+					"count": 1
+				}, {
+					"value": "diamond select",
+					"query": "brandName:diamond select",
+					"count": 1
+				}, {
+					"value": "disney",
+					"query": "brandName:disney",
+					"count": 6
+				}, {
+					"value": "disney girls",
+					"query": "brandName:disney girls",
+					"count": 2
+				}, {
+					"value": "disney princess",
+					"query": "brandName:disney princess",
+					"count": 1
+				}, {
+					"value": "dk publishing (dorling kindersley)",
+					"query": "brandName:dk publishing (dorling kindersley)",
+					"count": 1
+				}, {
+					"value": "dorling kindersley",
+					"query": "brandName:dorling kindersley",
+					"count": 3
+				}, {
+					"value": "editorial televisa",
+					"query": "brandName:editorial televisa",
+					"count": 1
+				}, {
+					"value": "funk pop",
+					"query": "brandName:funk pop",
+					"count": 1
+				}, {
+					"value": "funko",
+					"query": "brandName:funko",
+					"count": 86
+				}, {
+					"value": "funko pop",
+					"query": "brandName:funko pop",
+					"count": 1
+				}, {
+					"value": "g. i. joe",
+					"query": "brandName:g. i. joe",
+					"count": 2
+				}, {
+					"value": "games workshop",
+					"query": "brandName:games workshop",
+					"count": 1
+				}, {
+					"value": "gandhi",
+					"query": "brandName:gandhi",
+					"count": 4
+				}, {
+					"value": "ghostbusters",
+					"query": "brandName:ghostbusters",
+					"count": 4
+				}, {
+					"value": "half moon",
+					"query": "brandName:half moon",
+					"count": 2
+				}, {
+					"value": "halloween",
+					"query": "brandName:halloween",
+					"count": 1
+				}, {
+					"value": "handy laundry",
+					"query": "brandName:handy laundry",
+					"count": 1
+				}, {
+					"value": "hardhead",
+					"query": "brandName:hardhead",
+					"count": 1
+				}, {
+					"value": "hasbro",
+					"query": "brandName:hasbro",
+					"count": 135
+				}, {
+					"value": "hasbro gaming",
+					"query": "brandName:hasbro gaming",
+					"count": 6
+				}, {
+					"value": "hasbro nbc at home entertainment",
+					"query": "brandName:hasbro nbc at home entertainment",
+					"count": 1
+				}, {
+					"value": "hasbro over japan",
+					"query": "brandName:hasbro over japan",
+					"count": 1
+				}, {
+					"value": "hasbro toy group",
+					"query": "brandName:hasbro toy group",
+					"count": 1
+				}, {
+					"value": "hasbro toys",
+					"query": "brandName:hasbro toys",
+					"count": 1
+				}, {
+					"value": "heroclix",
+					"query": "brandName:heroclix",
+					"count": 1
+				}, {
+					"value": "heroina marvel halloween",
+					"query": "brandName:heroina marvel halloween",
+					"count": 1
+				}, {
+					"value": "i home",
+					"query": "brandName:i home",
+					"count": 2
+				}, {
+					"value": "idea nuova",
+					"query": "brandName:idea nuova",
+					"count": 1
+				}, {
+					"value": "incógnita",
+					"query": "brandName:incógnita",
+					"count": 1
+				}, {
+					"value": "iron studios",
+					"query": "brandName:iron studios",
+					"count": 4
+				}, {
+					"value": "jazwares",
+					"query": "brandName:jazwares",
+					"count": 2
+				}, {
+					"value": "jenga",
+					"query": "brandName:jenga",
+					"count": 1
+				}, {
+					"value": "jormftte",
+					"query": "brandName:jormftte",
+					"count": 1
+				}, {
+					"value": "kenner",
+					"query": "brandName:kenner",
+					"count": 1
+				}, {
+					"value": "kidsdesing",
+					"query": "brandName:kidsdesing",
+					"count": 1
+				}, {
+					"value": "legends, l.p.",
+					"query": "brandName:legends%2G l.p.",
+					"count": 1
+				}, {
+					"value": "lego",
+					"query": "brandName:lego",
+					"count": 11
+				}, {
+					"value": "loungefly",
+					"query": "brandName:loungefly",
+					"count": 1
+				}, {
+					"value": "loz",
+					"query": "brandName:loz",
+					"count": 1
+				}, {
+					"value": "lush decor",
+					"query": "brandName:lush decor",
+					"count": 2
+				}, {
+					"value": "marvel",
+					"query": "brandName:marvel",
+					"count": 76
+				}, {
+					"value": "marvel avengers halloween",
+					"query": "brandName:marvel avengers halloween",
+					"count": 4
+				}, {
+					"value": "marvel avengers superheroes",
+					"query": "brandName:marvel avengers superheroes",
+					"count": 1
+				}, {
+					"value": "marvel comics",
+					"query": "brandName:marvel comics",
+					"count": 1
+				}, {
+					"value": "marvel comics halloween",
+					"query": "brandName:marvel comics halloween",
+					"count": 1
+				}, {
+					"value": "marvel education",
+					"query": "brandName:marvel education",
+					"count": 1
+				}, {
+					"value": "marvel halloween",
+					"query": "brandName:marvel halloween",
+					"count": 2
+				}, {
+					"value": "marvel studios",
+					"query": "brandName:marvel studios",
+					"count": 2
+				}, {
+					"value": "marvel superheroes halloween",
+					"query": "brandName:marvel superheroes halloween",
+					"count": 1
+				}, {
+					"value": "maximus",
+					"query": "brandName:maximus",
+					"count": 12
+				}, {
+					"value": "mini",
+					"query": "brandName:mini",
+					"count": 1
+				}, {
+					"value": "monopoly",
+					"query": "brandName:monopoly",
+					"count": 5
+				}, {
+					"value": "my little pony",
+					"query": "brandName:my little pony",
+					"count": 1
+				}, {
+					"value": "neca",
+					"query": "brandName:neca",
+					"count": 3
+				}, {
+					"value": "nerf",
+					"query": "brandName:nerf",
+					"count": 8
+				}, {
+					"value": "nintendo",
+					"query": "brandName:nintendo",
+					"count": 3
+				}, {
+					"value": "nintendo switch",
+					"query": "brandName:nintendo switch",
+					"count": 4
+				}, {
+					"value": "novelty",
+					"query": "brandName:novelty",
+					"count": 12
+				}, {
+					"value": "oem",
+					"query": "brandName:oem",
+					"count": 1
+				}, {
+					"value": "panam",
+					"query": "brandName:panam",
+					"count": 3
+				}, {
+					"value": "pantheon",
+					"query": "brandName:pantheon",
+					"count": 1
+				}, {
+					"value": "phidal publishing",
+					"query": "brandName:phidal publishing",
+					"count": 1
+				}, {
+					"value": "planeta",
+					"query": "brandName:planeta",
+					"count": 1
+				}, {
+					"value": "planeta infantil mexico",
+					"query": "brandName:planeta infantil mexico",
+					"count": 4
+				}, {
+					"value": "planeta junior",
+					"query": "brandName:planeta junior",
+					"count": 3
+				}, {
+					"value": "planeta mexico",
+					"query": "brandName:planeta mexico",
+					"count": 1
+				}, {
+					"value": "play doh",
+					"query": "brandName:play doh",
+					"count": 1
+				}, {
+					"value": "play station 4",
+					"query": "brandName:play station 4",
+					"count": 1
+				}, {
+					"value": "play-doh",
+					"query": "brandName:play-doh",
+					"count": 2
+				}, {
+					"value": "playstation",
+					"query": "brandName:playstation",
+					"count": 1
+				}, {
+					"value": "playstation 4",
+					"query": "brandName:playstation 4",
+					"count": 4
+				}, {
+					"value": "powe",
+					"query": "brandName:powe",
+					"count": 2
+				}, {
+					"value": "ps4",
+					"query": "brandName:ps4",
+					"count": 2
+				}, {
+					"value": "pyramid",
+					"query": "brandName:pyramid",
+					"count": 1
+				}, {
+					"value": "quantum mechanix marvel",
+					"query": "brandName:quantum mechanix marvel",
+					"count": 1
+				}, {
+					"value": "rock candy",
+					"query": "brandName:rock candy",
+					"count": 1
+				}, {
+					"value": "roden",
+					"query": "brandName:roden",
+					"count": 1
+				}, {
+					"value": "rubies",
+					"query": "brandName:rubies",
+					"count": 10
+				}, {
+					"value": "ruz",
+					"query": "brandName:ruz",
+					"count": 1
+				}, {
+					"value": "sakar",
+					"query": "brandName:sakar",
+					"count": 1
+				}, {
+					"value": "screenlife",
+					"query": "brandName:screenlife",
+					"count": 1
+				}, {
+					"value": "sky collection baja",
+					"query": "brandName:sky collection baja",
+					"count": 2
+				}, {
+					"value": "spider-man",
+					"query": "brandName:spider-man",
+					"count": 1
+				}, {
+					"value": "spin master",
+					"query": "brandName:spin master",
+					"count": 1
+				}, {
+					"value": "square enix",
+					"query": "brandName:square enix",
+					"count": 1
+				}, {
+					"value": "sr. cara de papa",
+					"query": "brandName:sr. cara de papa",
+					"count": 1
+				}, {
+					"value": "star wars",
+					"query": "brandName:star wars",
+					"count": 11
+				}, {
+					"value": "sunnimix",
+					"query": "brandName:sunnimix",
+					"count": 3
+				}, {
+					"value": "super hero mashers",
+					"query": "brandName:super hero mashers",
+					"count": 1
+				}, {
+					"value": "super hero squad",
+					"query": "brandName:super hero squad",
+					"count": 1
+				}, {
+					"value": "superheroes marvel halloween",
+					"query": "brandName:superheroes marvel halloween",
+					"count": 1
+				}, {
+					"value": "toy biz",
+					"query": "brandName:toy biz",
+					"count": 1
+				}, {
+					"value": "transformers",
+					"query": "brandName:transformers",
+					"count": 1
+				}, {
+					"value": "ubisoft",
+					"query": "brandName:ubisoft",
+					"count": 1
+				}, {
+					"value": "upper deck",
+					"query": "brandName:upper deck",
+					"count": 1
+				}, {
+					"value": "vivitar",
+					"query": "brandName:vivitar",
+					"count": 1
+				}, {
+					"value": "voit",
+					"query": "brandName:voit",
+					"count": 5
+				}, {
+					"value": "warner bros. games",
+					"query": "brandName:warner bros. games",
+					"count": 1
+				}, {
+					"value": "wb games",
+					"query": "brandName:wb games",
+					"count": 2
+				}, {
+					"value": "wizkids",
+					"query": "brandName:wizkids",
+					"count": 4
+				}, {
+					"value": "xbox one",
+					"query": "brandName:xbox one",
+					"count": 7
+				}],
+				"color": [{
+					"value": "acero inox",
+					"query": "facet_color:acero inox",
+					"count": 5
+				}, {
+					"value": "amarillo",
+					"query": "facet_color:amarillo",
+					"count": 16
+				}, {
+					"value": "anaranjado",
+					"query": "facet_color:anaranjado",
+					"count": 3
+				}, {
+					"value": "aqua",
+					"query": "facet_color:aqua",
+					"count": 9
+				}, {
+					"value": "armada",
+					"query": "facet_color:armada",
+					"count": 4
+				}, {
+					"value": "as the picture",
+					"query": "facet_color:as the picture",
+					"count": 1
+				}, {
+					"value": "azul",
+					"query": "facet_color:azul",
+					"count": 59
+				}, {
+					"value": "azul, rojo y negro",
+					"query": "facet_color:azul%2G rojo y negro",
+					"count": 1
+				}, {
+					"value": "blanco",
+					"query": "facet_color:blanco",
+					"count": 10
+				}, {
+					"value": "cafe",
+					"query": "facet_color:cafe",
+					"count": 2
+				}, {
+					"value": "café",
+					"query": "facet_color:café",
+					"count": 5
+				}, {
+					"value": "capitan america",
+					"query": "facet_color:capitan america",
+					"count": 1
+				}, {
+					"value": "dorado",
+					"query": "facet_color:dorado",
+					"count": 1
+				}, {
+					"value": "gris",
+					"query": "facet_color:gris",
+					"count": 13
+				}, {
+					"value": "morado",
+					"query": "facet_color:morado",
+					"count": 9
+				}, {
+					"value": "mullti",
+					"query": "facet_color:mullti",
+					"count": 1
+				}, {
+					"value": "multi",
+					"query": "facet_color:multi",
+					"count": 39
+				}, {
+					"value": "multi color",
+					"query": "facet_color:multi color",
+					"count": 218
+				}, {
+					"value": "na",
+					"query": "facet_color:na",
+					"count": 10
+				}, {
+					"value": "naranja",
+					"query": "facet_color:naranja",
+					"count": 2
+				}, {
+					"value": "nego",
+					"query": "facet_color:nego",
+					"count": 1
+				}, {
+					"value": "negro",
+					"query": "facet_color:negro",
+					"count": 32
+				}, {
+					"value": "negro/azul",
+					"query": "facet_color:negro/azul",
+					"count": 1
+				}, {
+					"value": "original",
+					"query": "facet_color:original",
+					"count": 2
+				}, {
+					"value": "plata",
+					"query": "facet_color:plata",
+					"count": 1
+				}, {
+					"value": "plateado",
+					"query": "facet_color:plateado",
+					"count": 4
+				}, {
+					"value": "rojo",
+					"query": "facet_color:rojo",
+					"count": 41
+				}, {
+					"value": "rojo morado azul",
+					"query": "facet_color:rojo morado azul",
+					"count": 1
+				}, {
+					"value": "rosa",
+					"query": "facet_color:rosa",
+					"count": 8
+				}, {
+					"value": "tal como se describe",
+					"query": "facet_color:tal como se describe",
+					"count": 1
+				}, {
+					"value": "transparente",
+					"query": "facet_color:transparente",
+					"count": 6
+				}, {
+					"value": "trasnparente",
+					"query": "facet_color:trasnparente",
+					"count": 2
+				}, {
+					"value": "varios",
+					"query": "facet_color:varios",
+					"count": 3
+				}, {
+					"value": "verde",
+					"query": "facet_color:verde",
+					"count": 13
+				}],
+				"tamaño de pantalla": [{
+					"value": "0 pulgadas",
+					"query": "facet_tamaño de pantalla:0 pulgadas",
+					"count": 17
+				}, {
+					"value": "0.00 pulgadas",
+					"query": "facet_tamaño de pantalla:0.00 pulgadas",
+					"count": 11
+				}, {
+					"value": "0.00\" pulgadas",
+					"query": "facet_tamaño de pantalla:0.00\" pulgadas",
+					"count": 4
+				}, {
+					"value": "1 pulgadas",
+					"query": "facet_tamaño de pantalla:1 pulgadas",
+					"count": 3
+				}, {
+					"value": "1.00 pulgadas",
+					"query": "facet_tamaño de pantalla:1.00 pulgadas",
+					"count": 3
+				}, {
+					"value": "3.00 pulgadas",
+					"query": "facet_tamaño de pantalla:3.00 pulgadas",
+					"count": 2
+				}, {
+					"value": "9.80 pulgadas",
+					"query": "facet_tamaño de pantalla:9.80 pulgadas",
+					"count": 24
+				}],
+				"género": [{
+					"value": "acción",
+					"query": "facet_género:acción",
+					"count": 2
+				}, {
+					"value": "aventura",
+					"query": "facet_género:aventura",
+					"count": 2
+				}, {
+					"value": "hombre",
+					"query": "facet_género:hombre",
+					"count": 22
+				}, {
+					"value": "masculino",
+					"query": "facet_género:masculino",
+					"count": 1
+				}, {
+					"value": "mujer",
+					"query": "facet_género:mujer",
+					"count": 12
+				}, {
+					"value": "niña",
+					"query": "facet_género:niña",
+					"count": 17
+				}, {
+					"value": "niño",
+					"query": "facet_género:niño",
+					"count": 103
+				}, {
+					"value": "niños",
+					"query": "facet_género:niños",
+					"count": 3
+				}, {
+					"value": "unisex",
+					"query": "facet_género:unisex",
+					"count": 319
+				}],
+				"material de fabricación": [{
+					"value": "100% plastico",
+					"query": "facet_material de fabricación:100% plastico",
+					"count": 1
+				}, {
+					"value": "100% plástico",
+					"query": "facet_material de fabricación:100% plástico",
+					"count": 4
+				}, {
+					"value": "algodón",
+					"query": "facet_material de fabricación:algodón",
+					"count": 8
+				}, {
+					"value": "cerámica",
+					"query": "facet_material de fabricación:cerámica",
+					"count": 1
+				}, {
+					"value": "fibra de coco",
+					"query": "facet_material de fabricación:fibra de coco",
+					"count": 1
+				}, {
+					"value": "funda: 100% poliéster, relleno: 100% espuma de poliuretano",
+					"query": "facet_material de fabricación:funda: 100% poliéster%2G relleno: 100% espuma de poliuretano",
+					"count": 2
+				}, {
+					"value": "metal",
+					"query": "facet_material de fabricación:metal",
+					"count": 1
+				}, {
+					"value": "plástico",
+					"query": "facet_material de fabricación:plástico",
+					"count": 34
+				}, {
+					"value": "silicón",
+					"query": "facet_material de fabricación:silicón",
+					"count": 5
+				}],
+				"tamaño": [{
+					"value": "-",
+					"query": "facet_tamaño:-",
+					"count": 13
+				}, {
+					"value": "1",
+					"query": "facet_tamaño:1",
+					"count": 12
+				}, {
+					"value": "1.71 mts a 2.09 mts",
+					"query": "facet_tamaño:1.71 mts a 2.09 mts",
+					"count": 1
+				}, {
+					"value": "10 pulgadas",
+					"query": "facet_tamaño:10 pulgadas",
+					"count": 2
+				}, {
+					"value": "11.8 pulgadas",
+					"query": "facet_tamaño:11.8 pulgadas",
+					"count": 2
+				}, {
+					"value": "12 pulgadas",
+					"query": "facet_tamaño:12 pulgadas",
+					"count": 5
+				}, {
+					"value": "3 pulgadas",
+					"query": "facet_tamaño:3 pulgadas",
+					"count": 4
+				}, {
+					"value": "3.7 pulgadas",
+					"query": "facet_tamaño:3.7 pulgadas",
+					"count": 2
+				}, {
+					"value": "3.74 pulgadas",
+					"query": "facet_tamaño:3.74 pulgadas",
+					"count": 1
+				}, {
+					"value": "3.75 pulgadas",
+					"query": "facet_tamaño:3.75 pulgadas",
+					"count": 1
+				}, {
+					"value": "4 pulgadas",
+					"query": "facet_tamaño:4 pulgadas",
+					"count": 4
+				}, {
+					"value": "5.9 pulgadas",
+					"query": "facet_tamaño:5.9 pulgadas",
+					"count": 2
+				}, {
+					"value": "6 pulgadas",
+					"query": "facet_tamaño:6 pulgadas",
+					"count": 15
+				}, {
+					"value": "adulto",
+					"query": "facet_tamaño:adulto",
+					"count": 5
+				}, {
+					"value": "de 18 a 50 cms",
+					"query": "facet_tamaño:de 18 a 50 cms",
+					"count": 8
+				}, {
+					"value": "menos de 5 pulgadas",
+					"query": "facet_tamaño:menos de 5 pulgadas",
+					"count": 1
+				}, {
+					"value": "más de 10 pulgadas",
+					"query": "facet_tamaño:más de 10 pulgadas",
+					"count": 3
+				}, {
+					"value": "talla única",
+					"query": "facet_tamaño:talla única",
+					"count": 1
+				}],
+				"tipo": [{
+					"value": "juego completo",
+					"query": "facet_tipo:juego completo",
+					"count": 29
+				}, {
+					"value": "pase de temporada",
+					"query": "facet_tipo:pase de temporada",
+					"count": 1
+				}]
+			},
+			"totalElements": 717,
+			"facetFields": [],
+			"facetPivotFields": [],
+			"allFacets": [null],
+			"alternatives": [],
+			"totalPages": 15,
+			"sort": {
+				"sorted": false,
+				"unsorted": true,
+				"empty": true
+			},
+			"size": 48,
+			"number": 0,
+			"numberOfElements": 48,
+			"first": true,
+			"last": false,
+			"empty": false
+		}
+	},
+	"navigation": {}
+}
