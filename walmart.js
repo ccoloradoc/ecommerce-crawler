@@ -120,11 +120,11 @@ cron.schedule(target.cron, () => {
 
 	Promise.all([
 		requestHandler(target.url, '&page=1')
+			.then(Parser),
+		requestHandler(target.url, '&page=2')
+			.then(Parser),
+		requestHandler(target.url, '&page=3')
 			.then(Parser)
-		// requestHandler(target.url, '&page=2')
-		// 	.then(Parser),
-		// requestHandler(target.url, '&page=3')
-		// 	.then(Parser)
 	])
 	.then(MapUtils.mergeMaps)
 	.then(updateInMemory.bind(null, target.delta))

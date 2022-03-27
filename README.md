@@ -37,3 +37,10 @@ node index.js MercadolibreStarWars
 #run with pm2
 pm2 start index.json --name=MLSW -- MercadolibreStarWars
 ```
+
+### Utilities Installation
+
+```bash
+sudo apt install git nodejs npm -y
+sudo npm install pm2 -g
+```
