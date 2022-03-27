@@ -27,8 +27,7 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				title: title,
 				price: Utils.clean(price),
 				image: image,
-				link: link,
-				submited: false
+				link: link
 			}
 	    })
 		resolve(itemsMap)

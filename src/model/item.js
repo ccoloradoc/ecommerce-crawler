@@ -1,7 +1,15 @@
-module.exports = function Item(id, title, price, image, link) {
-	this.id = id
-	this.title = title 
-	this.price = price 
-	this.image = image
-	this.link = link
-}
+const mongoose = require('mongoose');
+
+const itemSchema = mongoose.Schema({
+	id: String,
+	title: String,
+	price: Number,
+	image: String,
+	link: String,
+	source: String,
+	available: Boolean
+}, {
+	timestamps: true
+});
+
+module.exports = mongoose.model('Item', itemSchema)
