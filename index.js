@@ -1,32 +1,38 @@
 const fs = require('fs')
 const request = require('request');
 const cron = require('node-cron');
+const mongoose = require('mongoose');
 const Utils = require('./src/commons/utils')
-const MapUtils = require('./src/commons/maps')
 const Roboto = require('./src/roboto')
+const loggerFactory = require('./src/log/logger')
+const Item = require('./src/model/item')
 const config = require('./crawler.config')
 
+// Obtaining configuration details
 const targets = Object.keys(config.targets)
 const processArgs = process.argv.slice(2);
 let target = {}
 let targetName = ''
 if(processArgs.length > 0) {
 	targetName = processArgs[0]
-	console.log('Processing target: ', targetName)
 	target = config.targets[targetName]
 } else if(targets.length > 0) {
 	targetName = targets[0]
-	console.log('Processing target: ', targetName)
 	target = config.targets[targetName]
 }
 
+let logger = loggerFactory.getInstance(__dirname, { source: targetName})
+logger.info('Processing target: ' + targetName)
+
+// Loading parser
 const Parser = require('./src/parser/' + target.parser)
 
-console.log('Reading archive from: ', target.json)
-let storedData = fs.readFileSync(target.json)
-let inMemoryMap = JSON.parse(storedData)
+// Connecting to database
+logger.info('Connecting to database')
+mongoose.connect(config.database.uri, config.database.options)
 
-console.log('Initializing telegram interface')
+// Initializing telegram interface
+logger.info('Initializing telegram interface')
 let roboto = new Roboto(
 	config.telegram.apiKey, 
 	config.telegram.channel, 
@@ -34,11 +40,12 @@ let roboto = new Roboto(
 )
 
 function hitPage(target) {
+	let logger = loggerFactory.getInstance()
 	return new Promise((resolve, reject) => {
-		console.log('Submiting request: ', target)
+		logger.info(`Submiting request: [${target}]`)
 		request(target, function (err, response, body) {
 			if(err) {
-				console.log('There was an error while requesting page: ', err)
+				logger.error('There was an error while requesting page: ' + err)
 				reject(err)
 			}
 		  	resolve(body)
@@ -46,58 +53,100 @@ function hitPage(target) {
 	})
 }
 
-function updateInMemory(delta, itemsMap) {
+async function refreshCatalogFromDatabase() {
+	let map = {}
+	let items = await Item.find({source: targetName, available: true})
+	items.forEach((item, i) => {
+		map[item.id] = item
+	});
+	logger.info(`Fetching ${items.length} from database`)
+	return map
+}
+
+async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
+	let catalog = await refreshCatalogFromDatabase()
+	// Clean database
+	let ack = await Item.updateMany({source: targetName}, {available: false})
+	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
+	
 	Object.entries(itemsMap).forEach(([key, item]) => {
-		if(inMemoryMap.hasOwnProperty(key)) {
-			if(inMemoryMap[key].price > item.price + delta) {
+		// If item exist in catalog
+		if(catalog.hasOwnProperty(key)) {
+			// Sending message if price is lower
+			if(catalog[key].price > item.price + delta) {
+				logger.info('	- [deal]: ' + item.title)
+				// Send message
 				let message = Utils.concatenate(
 					'El siguiente producto ha bajado de precio: ',
 					item.title, 
-					' de $', inMemoryMap[key].price, ' a $', item.price, ' ',
+					' de $', catalog[key].price, ' a $', item.price, ' ',
 					item.link
 				)
-				console.log('	- ', message)
 				if(messagesSubmited < 10) {
 					messagesSubmited++
 					roboto.submit(message)
 				}
 			}
+			// Updating product price
+			Item.findOneAndUpdate({
+					id: item.id,
+					source: targetName
+				}, {
+					$set: {
+						price: item.price,
+						link: item.link,
+						available: true
+					}
+				},
+				function(err, item) {
+					if (err) logger.error('Error while updating item: ' + item.id)
+				})
 		} else {
+			logger.info('	- [new-stock]: ' + item.title)			
+			//Send message
 			let message = Utils.concatenate(
 				'El siguiente producto ha sido listado: ',
 				item.title, 
 				' con precio $', item.price, ' ',
 				item.link
 			)
-			console.log('	+ ', message)
 			if(messagesSubmited < 10) {
 				roboto.submit(message)
 				messagesSubmited++
 			}
+			// Upsert new item with availability
+			Item.findOneAndUpdate({
+					id: item.id,
+					source: targetName
+				}, {
+					...item,
+					source: targetName,
+					available: true
+				}, {
+					upsert: true
+				},
+				function(err, doc) {
+					if (err) logger.error('Error while updating item: ' + item.id)
+				}
+			)
 		}
-		inMemoryMap[key] = item
+		// Update in memory catalog
+		catalog[key] = item
 	})
-	return inMemoryMap
+	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
+	return catalog
 }
 
-console.log('Starting cron for ', targetName, ' with schedule time: ', target.cron)
-cron.schedule(target.cron, () => {
-  	console.log()
-	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
+async function processIt() {
+	logger.info('Ranning cronjob');
 	hitPage(target.url)
 		.then(Parser)
-		.then(updateInMemory.bind(null, target.delta))
-		.then(MapUtils.storeMap.bind(null, target.json))
-		.then(MapUtils.itemsToCsv.bind(null, () => {
-			return target.csv + Utils.printableNow() + '.csv'
-		}))
+		.then(saveAndSubmit.bind(null, target.delta))
+}
+logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
+cron.schedule(target.cron, () => {
+	processIt()
 });
 
-// hitPage(target.url)
-// 	.then(Parser)
-// 	.then(updateInMemory.bind(null, target.delta))
-// 	.then(MapUtils.storeMap.bind(null, target.json))
-// 	.then(MapUtils.itemsToCsv.bind(null, () => {
-// 		return target.csv + Utils.printableNow() + '.csv'
-// 	}))
+processIt()

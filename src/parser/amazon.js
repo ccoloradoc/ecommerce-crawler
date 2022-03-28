@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const Utils = require('../commons/utils')
+const loggerFactory = require('../log/logger')
 const AmazonIdRegex = /dp\/(\w+)/
 
 function parseId(link) {
@@ -11,8 +12,9 @@ function parseId(link) {
 }
 
 module.exports = function consumeMercadoLibreResultPage(content) {
+	const logger = loggerFactory.getInstance()
 	return new Promise((resolve, reject) => {
-		console.log('Parsing content...')
+		logger.info('Parsing content...')
 		const $ = cheerio.load(content)
 	    let itemsMap = {}
 	    $('.s-main-slot.s-result-list .s-result-item.s-asin').each((index, node) => {
@@ -36,7 +38,7 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				}
 			}
 	    })
-		console.log('Found ', Object.entries(itemsMap).length, ' elements')
+		logger.info('Found ' + Object.entries(itemsMap).length + ' elements')
 		resolve(itemsMap)
 	});
 }

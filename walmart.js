@@ -1,10 +1,12 @@
 const fs = require('fs')
 const request = require('request');
 const cron = require('node-cron');
-const JsonDatabase = require('./src/model/JsonDatabase')
+const mongoose = require('mongoose');
+const Item = require('./src/model/item')
 const Utils = require('./src/commons/utils')
 const MapUtils = require('./src/commons/maps')
 const Roboto = require('./src/roboto')
+const loggerFactory = require('./src/log/logger')
 const requestFactory = require('./src/commons/request')
 const config = require('./crawler.config')
 
@@ -14,22 +16,23 @@ let target = {}
 let targetName = ''
 if(processArgs.length > 0) {
 	targetName = processArgs[0]
-	console.log('Processing target: ', targetName)
 	target = config.targets[targetName]
 } else if(targets.length > 0) {
 	targetName = targets[0]
-	console.log('Processing target: ', targetName)
 	target = config.targets[targetName]
 }
 
+let logger = loggerFactory.getInstance(__dirname, { source: targetName})
+logger.info('Processing target: ' + targetName)
+
+// Loading parser
 const Parser = require('./src/parser/' + target.parser)
 
-let jsonDatabase = JsonDatabase.open(target.database)
-let storedData = jsonDatabase.read()
-let inMemoryMap = JSON.parse(storedData)
-console.log('Processing ', Object.entries(inMemoryMap).length, ' elements')
+// Connecting to database
+logger.info('Connecting to database')
+mongoose.connect(config.database.uri, config.database.options)
 
-console.log('Initializing telegram interface')
+logger.info('Initializing telegram interface')
 let roboto = new Roboto(
 	config.telegram.apiKey, 
 	config.telegram.channel, 
@@ -38,67 +41,116 @@ let roboto = new Roboto(
 
 let requestHandler =  requestFactory(target.debug)
 
-function updateInMemory(delta, itemsMap) {
+async function refreshCatalogFromDatabase() {
+	let map = {}
+	let items = await Item.find({source: targetName, available: true})
+	items.forEach((item, i) => {
+		map[item.id] = item
+	})
+	logger.info(`Fetching ${items.length} from database`)
+	return map
+}
+
+async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
-	console.log('Processing ', Object.entries(itemsMap).length, ' elements')
+	let catalog = await refreshCatalogFromDatabase()
+	
+	// Clean database
+	let ack = await Item.updateMany({source: targetName}, {available: false})
+	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
+	
 	Object.entries(itemsMap).forEach(([key, item]) => {
-		if(inMemoryMap.hasOwnProperty(key)) {
-			//console.log('Processing Existent [', key, ']', inMemoryMap[key].price, ' - ', item.price)
+		// If item exist in catalog
+		if(catalog.hasOwnProperty(key)) {
+			let available = true
 			if(item.price == 0) {
-				console.log('	- SIN STOCK: ', item.title)
-			} else if(inMemoryMap[key].price == 0) {
+				logger.info('	- [no-stock]: ' + item.title)
+				available = false
+			} else if(catalog[key].price == 0) {
+				logger.info('	- [new-stock]: ' + item.title)
+				//Send message
 				let message = Utils.concatenate(
 					'NUEVO STOCK: El siguiente esta disponible: ',
 					item.title, 
 					' con un precio de $', item.price, ' ',
 					item.link
 				)
-				console.log('	- ', message)
+				
 				if(messagesSubmited < 10) {
 					messagesSubmited++
 					roboto.submit(message)
 				}
-			} else if(inMemoryMap[key].price > item.price + delta) {
+			} else if(catalog[key].price > item.price + delta) {
+				logger.info('	- [deal]: ' + item.title)
+				//Send message
 				let message = Utils.concatenate(
 					'DEAL: El siguiente producto ha bajado de precio: ',
 					item.title, 
-					' de $', inMemoryMap[key].price, ' a $', item.price, ' ',
+					' de $', catalog[key].price, ' a $', item.price, ' ',
 					item.link
 				)
-				console.log('	- ', message)
 				if(messagesSubmited < 10) {
 					messagesSubmited++
 					roboto.submit(message)
 				}
 			}
+			
+			// Updating product price
+			Item.findOneAndUpdate({
+					id: item.id,
+					source: targetName
+				}, {
+					$set: {
+						price: item.price,
+						link: item.link,
+						available: available
+					}
+				},
+				function(err, item) {
+					if (err) logger.error('Error while updating item: ' + item.id)
+				})
 		} else {
-			//console.log('Processing New [', key, ']')
+			let available = true
 			if(item.price == 0) {
-				console.log('	- Sin existencia: ', item.title)
+				available = false
+				logger.info('	- [no-stock]: ' + item.title)
 			} else {
+				logger.info('	- [new-stock]: ' + item.title)
 				let message = Utils.concatenate(
 					'NUEVO: El siguiente producto ha sido listado: ',
 					item.title, 
 					' con precio $', item.price, ' ',
 					item.link
 				)
-				console.log('	+ ', message)
 				if(messagesSubmited < 10) {
 					roboto.submit(message)
 					messagesSubmited++
 				}
 			}
-			
+			// Upsert new item with availability
+			Item.findOneAndUpdate({
+					id: item.id,
+					source: targetName
+				}, {
+					...item,
+					source: targetName,
+					available: available
+				}, {
+					upsert: true
+				},
+				function(err, doc) {
+					if (err) logger.error('Error while updating item: ' + item.id)
+				}
+			)
 		}
-		inMemoryMap[key] = item
+		catalog[key] = item
 	})
-	return inMemoryMap
+	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
+	return catalog
 }
 
-console.log('Starting cron for ', targetName, ' with schedule time: ', target.cron)
-cron.schedule(target.cron, () => {
-  	console.log()
-	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
+async function processIt() {
+	logger.info('Ranning cronjob');
 	Promise.all([
 		requestHandler(target.url, '&page=1')
 			.then(Parser),
@@ -108,30 +160,12 @@ cron.schedule(target.cron, () => {
 			.then(Parser)
 	])
 	.then(MapUtils.mergeMaps)
-	.then(updateInMemory.bind(null, target.delta))
-	.then((itemsMap) => {
-		jsonDatabase.write(itemsMap)
-		return itemsMap
-	})
-	.then(MapUtils.itemsToCsv.bind(null, () => {
-		return target.csv + Utils.printableNow() + '.csv'
-	}))
+	.then(saveAndSubmit.bind(null, target.delta))
+}
+
+logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
+cron.schedule(target.cron, () => {
+  	processIt()
 });
 
-	Promise.all([
-		requestHandler(target.url, '&page=1')
-			.then(Parser),
-		requestHandler(target.url, '&page=2')
-			.then(Parser),
-		requestHandler(target.url, '&page=3')
-			.then(Parser)
-	])
-	.then(MapUtils.mergeMaps)
-	.then(updateInMemory.bind(null, target.delta))
-	.then((itemsMap) => {
-		jsonDatabase.write(itemsMap)
-		return itemsMap
-	})
-	.then(MapUtils.itemsToCsv.bind(null, () => {
-		return target.csv + Utils.printableNow() + '.csv'
-	}))
+processIt()

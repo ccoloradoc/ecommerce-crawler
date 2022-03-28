@@ -1,8 +1,10 @@
+const loggerFactory = require('../log/logger')
 
 module.exports = function consumeWalmart(content) {
+	const logger = loggerFactory.getInstance()
 	return new Promise((resolve, reject) => {
 		let itemsMap = {}
-		console.log('Parsing content...')
+		logger.info('Parsing content...')
 		let payload = JSON.parse(content)
 		let filtered = payload.appendix.SearchResults.content
 			.filter(item => {
@@ -23,7 +25,7 @@ module.exports = function consumeWalmart(content) {
 					return true
 				}
 			})
-		console.log('Processing ', payload.appendix.SearchResults.content.length, ' filter to ', filtered.length)
+		logger.info('Processing ' + payload.appendix.SearchResults.content.length + ' filter to ' + filtered.length)
 		filtered
 			.forEach((item, i) => {
 				itemsMap[item.id] = {
@@ -36,7 +38,7 @@ module.exports = function consumeWalmart(content) {
 				}
 			});
 		
-		console.log('Found ', Object.entries(itemsMap).length, ' elements')
+		logger.info('Found ' + Object.entries(itemsMap).length + ' elements')
 		resolve(itemsMap)
 	});
 }
