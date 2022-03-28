@@ -11,15 +11,16 @@ function Roboto(apiKey, chatId, debugMode) {
 
 Roboto.prototype = {
 	submit: function(message) {
+		let _this = this
 		if(this.debugMode) {
 			this.logger.info(" Submiting: " + message)
 			return
 		}
 		request(this.url + '&text=' + encodeURI(message), function (err, response, body) {
 			if(err) {
-				this.logger.error('There was an error while submiting message: ' + err)
+				_this.logger.error('There was an error while submiting message: ' + err)
 			}
-			this.logger.info('Receving response from service: ', body)
+			_this.logger.info('Receving response from service: ', body)
 		})
 	}
 }
