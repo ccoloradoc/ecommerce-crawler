@@ -42,7 +42,7 @@ let roboto = new Roboto(
 function hitPage(target) {
 	let logger = loggerFactory.getInstance()
 	return new Promise((resolve, reject) => {
-		logger.info('Submiting request: ' + target)
+		logger.info(`Submiting request: [${target}]`)
 		request(target, function (err, response, body) {
 			if(err) {
 				logger.error('There was an error while requesting page: ' + err)
@@ -59,7 +59,7 @@ async function refreshCatalogFromDatabase() {
 	items.forEach((item, i) => {
 		map[item.id] = item
 	});
-	logger.info('Fetching ' + items.length + ' from database')
+	logger.info(`Fetching ${items.length} from database`)
 	return map
 }
 
@@ -68,7 +68,7 @@ async function saveAndSubmit(delta, itemsMap) {
 	let catalog = await refreshCatalogFromDatabase()
 	// Clean database
 	let ack = await Item.updateMany({source: targetName}, {available: false})
-	logger.info('Updating availability ' + ack.modifiedCount + ' of ' + ack.matchedCount)
+	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
 	
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
@@ -134,7 +134,7 @@ async function saveAndSubmit(delta, itemsMap) {
 		// Update in memory catalog
 		catalog[key] = item
 	})
-	logger.info('Finished processing ' + Object.keys(itemsMap).length + ' items')
+	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
 	return catalog
 }
 
@@ -144,7 +144,7 @@ async function processIt() {
 		.then(Parser)
 		.then(saveAndSubmit.bind(null, target.delta))
 }
-logger.info('Starting cron for ' + targetName + ' with schedule time: ' + target.cron)
+logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
 cron.schedule(target.cron, () => {
 	processIt()
 });

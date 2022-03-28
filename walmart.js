@@ -47,7 +47,7 @@ async function refreshCatalogFromDatabase() {
 	items.forEach((item, i) => {
 		map[item.id] = item
 	})
-	logger.info('Fetching ' + items.length + ' from database')
+	logger.info(`Fetching ${items.length} from database`)
 	return map
 }
 
@@ -57,7 +57,7 @@ async function saveAndSubmit(delta, itemsMap) {
 	
 	// Clean database
 	let ack = await Item.updateMany({source: targetName}, {available: false})
-	logger.info('Updating availability ' + ack.modifiedCount + ' of ' + ack.matchedCount)
+	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
 	
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
@@ -122,7 +122,6 @@ async function saveAndSubmit(delta, itemsMap) {
 					' con precio $', item.price, ' ',
 					item.link
 				)
-				console.log('	+ ', message)
 				if(messagesSubmited < 10) {
 					roboto.submit(message)
 					messagesSubmited++
@@ -146,7 +145,7 @@ async function saveAndSubmit(delta, itemsMap) {
 		}
 		catalog[key] = item
 	})
-	logger.info('Finished processing ' + Object.keys(itemsMap).length + ' items')
+	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
 	return catalog
 }
 
@@ -164,7 +163,7 @@ async function processIt() {
 	.then(saveAndSubmit.bind(null, target.delta))
 }
 
-logger.info('Starting cron for ' + targetName + ' with schedule time: ' + target.cron)
+logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
 cron.schedule(target.cron, () => {
   	processIt()
 });
