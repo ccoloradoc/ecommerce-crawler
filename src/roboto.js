@@ -20,7 +20,7 @@ Roboto.prototype = {
 			if(err) {
 				_this.logger.error('There was an error while submiting message: ' + err)
 			}
-			_this.logger.info('Receving response from service: ', body)
+			_this.logger.info('Receving response from service: ', JSON.parse(body))
 		})
 	}
 }
