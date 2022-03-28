@@ -6,3 +6,4 @@ telegram.js
 archive/*.csv
 config.json
 crawler.config.json
+logs/*

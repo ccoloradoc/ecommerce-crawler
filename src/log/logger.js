@@ -28,11 +28,11 @@ module.exports = (function() {
 			transports: [
 				new transports.Console(),
 				new transports.File({
-					filename: path + '/logs/combined.log',
+					filename: path + `/logs/${metadata.source.toLowerCase()}-combined.log`,
 					level: 'info'
 				}),
 				new transports.File({
-					filename: path + '/logs/errors.log',
+					filename: path + `/logs/${metadata.source.toLowerCase()}-errors.log`,
 					level: 'error'
 				})
 			]
