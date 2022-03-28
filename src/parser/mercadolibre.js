@@ -1,6 +1,6 @@
-
 const cheerio = require('cheerio');
 const Utils = require('../commons/utils')
+const loggerFactory = require('../log/logger')
 const MLRegex = /mercadolibre.com.mx\/(\w+-\w+)/
 
 function parseId(link) {
@@ -12,8 +12,9 @@ function parseId(link) {
 }
 
 module.exports = function consumeMercadoLibreResultPage(content) {
+	const logger = loggerFactory.getInstance()
 	return new Promise((resolve, reject) => {
-		console.log('Parsing content...')
+		logger.info('Parsing content...')
 		const $ = cheerio.load(content)
 	    let itemsMap = {}
 	    $('.ui-search-layout--grid .ui-search-layout__item').each((index, node) => {
@@ -30,6 +31,7 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				link: link
 			}
 	    })
+		logger.info('Found ' + Object.entries(itemsMap).length + ' elements')
 		resolve(itemsMap)
 	});
 }

@@ -1,0 +1,153 @@
+{"level":"info","message":"Processing target: WalmartMarvelLegends","meta":{"source":"WalmartMarvelLegends"},"service":"user-service"}
+{"level":"info","message":"Processing target: WalmartMarvelLegends","service":"user-service","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Connecting to database","service":"user-service","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Initializing telegram interface","service":"user-service","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * *","service":"user-service","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Ranning cronjob @[28-3-2022T9.19.51]","service":"user-service","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Processing target: WalmartMarvelLegends","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Connecting to database","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Initializing telegram interface","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * *","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Ranning cronjob @[28-3-2022T9.21.58]","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Processing target: WalmartMarvelLegends","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Connecting to database","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Initializing telegram interface","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * *","source":"WalmartMarvelLegends"}
+{"level":"info","message":"Ranning cronjob @[28-3-2022T9.22.24]","source":"WalmartMarvelLegends"}
+2022-03-28T15:27:23.999Z [[32minfo[39m] : Processing target: WalmartMarvelLegends {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:24.003Z [[32minfo[39m] : Connecting to database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:24.013Z [[32minfo[39m] : Initializing telegram interface {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:24.013Z [[32minfo[39m] : Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * * {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:24.021Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.27.24] {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:25.831Z [[32minfo[39m] : Fetching 75 from database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:25.950Z [[32minfo[39m] : Updating availability75of 75 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:25.956Z [[32minfo[39m] : 	- [new-stock]: HASBRO AVN TITAN HERO 12 INCH CAPITAN HASBRO E1421 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:27:25.957Z [[32minfo[39m] : Finished processing 75 items {"source":"WalmartMarvelLegends"}
+2022-03-28T15:33:00.843Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.33.0] {"source":"WalmartMarvelLegends"}
+2022-03-28T15:33:01.373Z [[32minfo[39m] : Fetching 75 from database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:33:01.478Z [[32minfo[39m] : Updating availability76of 76 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:33:01.482Z [[32minfo[39m] : Finished processing 75 items {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.835Z [[32minfo[39m] : Creating logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.836Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.837Z [[32minfo[39m] : Processing target: WalmartMarvelLegends {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.837Z [[32minfo[39m] : Connecting to database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.844Z [[32minfo[39m] : Initializing telegram interface {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.845Z [[32minfo[39m] : Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * * {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:19.849Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.43.19] {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.208Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.209Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.210Z [[32minfo[39m] : Processing 48 filter to 23 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.210Z [[32minfo[39m] : Found 23 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.226Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.227Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.227Z [[32minfo[39m] : Processing 48 filter to 24 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.228Z [[32minfo[39m] : Found 24 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.235Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.235Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.236Z [[32minfo[39m] : Processing 48 filter to 28 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:20.236Z [[32minfo[39m] : Found 28 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:21.547Z [[32minfo[39m] : Fetching 75 from database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:21.661Z [[32minfo[39m] : Updating availability76of 76 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:43:21.667Z [[32minfo[39m] : Finished processing 75 items {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.309Z [[32minfo[39m] : Creating logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.310Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.311Z [[32minfo[39m] : Processing target: WalmartMarvelLegends {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.311Z [[32minfo[39m] : Connecting to database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.318Z [[32minfo[39m] : Initializing telegram interface {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.319Z [[32minfo[39m] : Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * * {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.323Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.44.51] {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.323Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.323Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=1 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.326Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.326Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=2 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.327Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.327Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=3 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.550Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.550Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.551Z [[32minfo[39m] : Processing 48 filter to 23 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.552Z [[32minfo[39m] : Found 23 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.613Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.613Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.614Z [[32minfo[39m] : Processing 48 filter to 28 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.614Z [[32minfo[39m] : Found 28 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.620Z [[32minfo[39m] : Returning logger instance {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.620Z [[32minfo[39m] : Parsing content... {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.621Z [[32minfo[39m] : Processing 48 filter to 24 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:51.621Z [[32minfo[39m] : Found 24 elements {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:53.083Z [[32minfo[39m] : Fetching 75 from database {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:53.217Z [[32minfo[39m] : Updating availability76of 76 {"source":"WalmartMarvelLegends"}
+2022-03-28T15:44:53.224Z [[32minfo[39m] : Finished processing 75 items {"source":"WalmartMarvelLegends"}
+2022-03-28T15:48:25.944Z [[32minfo[39m] : Creating logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.945Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.945Z [[32minfo[39m] : Processing target: WalmartMarvelLegends | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.946Z [[32minfo[39m] : Connecting to database | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.954Z [[32minfo[39m] : Initializing telegram interface | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.954Z [[32minfo[39m] : Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * * | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.958Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.48.25] | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.958Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.959Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=1 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.962Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.962Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=2 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.963Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:25.964Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=3 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.203Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.204Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.204Z [[32minfo[39m] : Processing 48 filter to 23 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.205Z [[32minfo[39m] : Found 23 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.297Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.297Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.298Z [[32minfo[39m] : Processing 48 filter to 28 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.298Z [[32minfo[39m] : Found 28 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.324Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.324Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.325Z [[32minfo[39m] : Processing 48 filter to 24 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:26.325Z [[32minfo[39m] : Found 24 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:48:27.754Z [[32minfo[39m] : Fetching 75 from database | source: "WalmartMarvelLegends"
+2022-03-28T15:48:27.867Z [[32minfo[39m] : Updating availability76of 76 | source: "WalmartMarvelLegends"
+2022-03-28T15:48:27.868Z [[32minfo[39m] : 	- [new-stock]: Set de Figuras Hasbro Peppa Pig 5 Pulgadas | source: "WalmartMarvelLegends"
+2022-03-28T15:48:27.874Z [[32minfo[39m] : Finished processing 75 items | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.909Z [[32minfo[39m] : Creating logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.910Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.911Z [[32minfo[39m] : Processing target: WalmartMarvelLegends | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.911Z [[32minfo[39m] : Connecting to database | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.919Z [[32minfo[39m] : Initializing telegram interface | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.919Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.919Z [[32minfo[39m] : Starting cron for WalmartMarvelLegends with schedule time: 3,18,33,48 * * * * | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.923Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T9.51.14] | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.924Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.924Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=1 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.927Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.927Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=2 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.927Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:14.927Z [[32minfo[39m] : Submiting request: http://www.walmart.com.mx/api/v2/page/search?Ntt=marvel+hasbro&size=48&page=3 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.146Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.146Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.147Z [[32minfo[39m] : Processing 48 filter to 24 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.147Z [[32minfo[39m] : Found 24 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.216Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.217Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.217Z [[32minfo[39m] : Processing 48 filter to 28 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.217Z [[32minfo[39m] : Found 28 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.220Z [[32minfo[39m] : Returning logger instance | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.220Z [[32minfo[39m] : Parsing content... | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.220Z [[32minfo[39m] : Processing 48 filter to 23 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:15.220Z [[32minfo[39m] : Found 23 elements | source: "WalmartMarvelLegends"
+2022-03-28T15:51:16.614Z [[32minfo[39m] : Fetching 75 from database | source: "WalmartMarvelLegends"
+2022-03-28T15:51:16.728Z [[32minfo[39m] : Updating availability77of 77 | source: "WalmartMarvelLegends"
+2022-03-28T15:51:16.734Z [[32minfo[39m] : Finished processing 75 items | source: "WalmartMarvelLegends"
+2022-03-28T16:01:56.266Z [[32minfo[39m] : Creating logger instance | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.268Z [[32minfo[39m] : Returning logger instance | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.268Z [[32minfo[39m] : Processing target: MercadolibreMarvelLegends | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.317Z [[32minfo[39m] : Connecting to database | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.325Z [[32minfo[39m] : Initializing telegram interface | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.325Z [[32minfo[39m] : Returning logger instance | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.326Z [[32minfo[39m] : Starting cron for MercadolibreMarvelLegends with schedule time: 0,15,30,45 * * * * | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.330Z [[32minfo[39m] : Ranning cronjob @[28-3-2022T10.1.56] | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.330Z [[32minfo[39m] : Returning logger instance | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:56.330Z [[32minfo[39m] : Submiting request: https://listado.mercadolibre.com.mx/marvel-legends_Tienda_hasbro#D[A:marvel%20legends,on] | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:57.098Z [[32minfo[39m] : Returning logger instance | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:57.098Z [[32minfo[39m] : Parsing content... | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:57.236Z [[32minfo[39m] : Found 27 elements | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:58.161Z [[32minfo[39m] : Fetching 27 from database | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:58.282Z [[32minfo[39m] : Updating availability 27 of 27 | source: "MercadolibreMarvelLegends"
+2022-03-28T16:01:58.288Z [[32minfo[39m] : Finished processing 27 items | source: "MercadolibreMarvelLegends"

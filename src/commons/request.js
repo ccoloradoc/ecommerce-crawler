@@ -1,5 +1,6 @@
 const request = require('request');
 const fs = require('fs')
+const loggerFactory = require('../log/logger')
 
 let user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
 
@@ -10,9 +11,10 @@ function readFromBootstrap(target) {
 }
 
 function hitPage(target, addendum) {
+	const logger = loggerFactory.getInstance()
 	let url = target.prod + addendum
 	return new Promise((resolve, reject) => {
-		console.log('Submiting request: ', url)
+		logger.info('Submiting request: ' + url)
 		request({
 			url: url,
 			headers: {
@@ -20,7 +22,7 @@ function hitPage(target, addendum) {
 			}
 		}, function (err, response, body) {
 			if(err) {
-				console.log('There was an error while requesting page: ', err)
+				logger.error('There was an error while requesting page: ' + err)
 				reject(err)
 			}
 		  	resolve(body)
