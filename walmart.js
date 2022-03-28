@@ -68,30 +68,17 @@ async function saveAndSubmit(delta, itemsMap) {
 				available = false
 			} else if(catalog[key].price == 0) {
 				logger.info('	- [new-stock]: ' + item.title)
-				//Send message
-				let message = Utils.concatenate(
-					'NUEVO STOCK: El siguiente esta disponible: ',
-					item.title, 
-					' con un precio de $', item.price, ' ',
-					item.link
-				)
-				
+				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}*`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 				}
 			} else if(catalog[key].price > item.price + delta) {
 				logger.info('	- [deal]: ' + item.title)
-				//Send message
-				let message = Utils.concatenate(
-					'DEAL: El siguiente producto ha bajado de precio: ',
-					item.title, 
-					' de $', catalog[key].price, ' a $', item.price, ' ',
-					item.link
-				)
+				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}*`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 				}
 			}
 			
@@ -116,14 +103,9 @@ async function saveAndSubmit(delta, itemsMap) {
 				logger.info('	- [no-stock]: ' + item.title)
 			} else {
 				logger.info('	- [new-stock]: ' + item.title)
-				let message = Utils.concatenate(
-					'NUEVO: El siguiente producto ha sido listado: ',
-					item.title, 
-					' con precio $', item.price, ' ',
-					item.link
-				)
+				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}*`
 				if(messagesSubmited < 10) {
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 					messagesSubmited++
 				}
 			}

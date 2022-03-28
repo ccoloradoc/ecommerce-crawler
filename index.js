@@ -77,15 +77,10 @@ async function saveAndSubmit(delta, itemsMap) {
 			if(catalog[key].price > item.price + delta) {
 				logger.info('	- [deal]: ' + item.title)
 				// Send message
-				let message = Utils.concatenate(
-					'El siguiente producto ha bajado de precio: ',
-					item.title, 
-					' de $', catalog[key].price, ' a $', item.price, ' ',
-					item.link
-				)
+				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}*`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 				}
 			}
 			// Updating product price
@@ -103,16 +98,10 @@ async function saveAndSubmit(delta, itemsMap) {
 					if (err) logger.error('Error while updating item: ' + item.id)
 				})
 		} else {
-			logger.info('	- [new-stock]: ' + item.title)			
-			//Send message
-			let message = Utils.concatenate(
-				'El siguiente producto ha sido listado: ',
-				item.title, 
-				' con precio $', item.price, ' ',
-				item.link
-			)
+			logger.info('	- [new-stock]: ' + item.title)	
+			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}*`		
 			if(messagesSubmited < 10) {
-				roboto.submit(message)
+				roboto.sendPhoto(item.image, message)
 				messagesSubmited++
 			}
 			// Upsert new item with availability
