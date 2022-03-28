@@ -62,6 +62,7 @@ async function refreshCatalogFromDatabase() {
 
 async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
+	let catalog = await refreshCatalogFromDatabase()
 	// Clean database
 	let ack = await Item.updateMany({source: targetName}, {available: false})
 	console.log('Updating availability', ack.modifiedCount, 'of ', ack.matchedCount)
@@ -69,22 +70,20 @@ async function saveAndSubmit(delta, itemsMap) {
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
-			if(catalog[key].price != item.price + delta) {
-				// Updating product price
-				Item.findOneAndUpdate({
-						id: item.id,
-						source: targetName
-					}, {
-						$set: {
-							price: item.price,
-							link: item.link,
-							available: true
-						}
-					},
-					function(err, item) {
-						if (err) console.log('Error while updating: ', err)
-					})
-			}
+			// Updating product price
+			Item.findOneAndUpdate({
+					id: item.id,
+					source: targetName
+				}, {
+					$set: {
+						price: item.price,
+						link: item.link,
+						available: true
+					}
+				},
+				function(err, item) {
+					if (err) console.log('Error while updating: ', err)
+				})
 			// Sending message if price is lower
 			if(catalog[key].price > item.price + delta) {
 				let message = Utils.concatenate(
@@ -136,7 +135,6 @@ async function saveAndSubmit(delta, itemsMap) {
 
 async function processIt() {
 	console.log('Ranning cronjob @[', Utils.printableNow(), ']');
-	catalog = await refreshCatalogFromDatabase()
 	hitPage(target.url)
 		.then(Parser)
 		.then(saveAndSubmit.bind(null, target.delta))
@@ -146,5 +144,4 @@ cron.schedule(target.cron, () => {
 	processIt()
 });
 
-var catalog = {}
 processIt()
