@@ -34,7 +34,7 @@ module.exports = function consumeWalmart(content) {
 					price: item.skuPrice,
 					image: item.imageUrls.large,
 					link: 'https://www.walmart.com.mx' + item.productSeoUrl.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
-					submited: false
+					store: 'Walmart'
 				}
 			});
 		

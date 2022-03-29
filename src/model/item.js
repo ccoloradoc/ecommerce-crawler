@@ -7,6 +7,7 @@ const itemSchema = mongoose.Schema({
 	image: String,
 	link: String,
 	source: String,
+	store: String,
 	available: Boolean
 }, {
 	timestamps: true

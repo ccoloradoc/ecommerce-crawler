@@ -77,7 +77,7 @@ async function saveAndSubmit(delta, itemsMap) {
 			if(catalog[key].price > item.price + delta) {
 				logger.info('	- [deal]: ' + item.title)
 				// Send message
-				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}*`
+				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
 					roboto.sendPhoto(item.image, message)
@@ -91,6 +91,7 @@ async function saveAndSubmit(delta, itemsMap) {
 					$set: {
 						price: item.price,
 						link: item.link,
+						store: item.store,
 						available: true
 					}
 				},
@@ -99,7 +100,7 @@ async function saveAndSubmit(delta, itemsMap) {
 				})
 		} else {
 			logger.info('	- [new-stock]: ' + item.title)	
-			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}*`		
+			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`		
 			if(messagesSubmited < 10) {
 				roboto.sendPhoto(item.image, message)
 				messagesSubmited++
@@ -111,6 +112,7 @@ async function saveAndSubmit(delta, itemsMap) {
 				}, {
 					...item,
 					source: targetName,
+					store: item.store,
 					available: true
 				}, {
 					upsert: true
