@@ -90,6 +90,7 @@ async function saveAndSubmit(delta, itemsMap) {
 					$set: {
 						price: item.price,
 						link: item.link,
+						image: item.image,
 						store: item.store,
 						available: available
 					}
