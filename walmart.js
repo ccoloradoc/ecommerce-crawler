@@ -43,7 +43,7 @@ let requestHandler =  requestFactory(target.debug)
 
 async function refreshCatalogFromDatabase() {
 	let map = {}
-	let items = await Item.find({source: targetName, available: true})
+	let items = await Item.find({source: targetName})
 	items.forEach((item, i) => {
 		map[item.id] = item
 	})
@@ -54,10 +54,6 @@ async function refreshCatalogFromDatabase() {
 async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
 	let catalog = await refreshCatalogFromDatabase()
-	
-	// Clean database
-	let ack = await Item.updateMany({source: targetName}, {available: false})
-	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
 	
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
@@ -76,6 +72,13 @@ async function saveAndSubmit(delta, itemsMap) {
 			} else if(catalog[key].price > item.price + delta) {
 				logger.info('	- [deal]: ' + item.title)
 				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
+				if(messagesSubmited < 10) {
+					messagesSubmited++
+					roboto.sendPhoto(item.image, message)
+				}
+			} else if(catalog[key].price < item.price) {
+				logger.info('	- [missing-deal]: ' + item.title)
+				let message = `*Rising:* El siguiente producto ha subido de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
 					roboto.sendPhoto(item.image, message)
