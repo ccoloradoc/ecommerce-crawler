@@ -43,7 +43,7 @@ let requestHandler =  requestFactory(target.debug)
 
 async function refreshCatalogFromDatabase() {
 	let map = {}
-	let items = await Item.find({source: targetName, available: true})
+	let items = await Item.find({source: targetName})
 	items.forEach((item, i) => {
 		map[item.id] = item
 	})
@@ -55,10 +55,6 @@ async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
 	let catalog = await refreshCatalogFromDatabase()
 	
-	// Clean database
-	let ack = await Item.updateMany({source: targetName}, {available: false})
-	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
-	
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
@@ -68,30 +64,24 @@ async function saveAndSubmit(delta, itemsMap) {
 				available = false
 			} else if(catalog[key].price == 0) {
 				logger.info('	- [new-stock]: ' + item.title)
-				//Send message
-				let message = Utils.concatenate(
-					'NUEVO STOCK: El siguiente esta disponible: ',
-					item.title, 
-					' con un precio de $', item.price, ' ',
-					item.link
-				)
-				
+				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 				}
 			} else if(catalog[key].price > item.price + delta) {
 				logger.info('	- [deal]: ' + item.title)
-				//Send message
-				let message = Utils.concatenate(
-					'DEAL: El siguiente producto ha bajado de precio: ',
-					item.title, 
-					' de $', catalog[key].price, ' a $', item.price, ' ',
-					item.link
-				)
+				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 				if(messagesSubmited < 10) {
 					messagesSubmited++
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
+				}
+			} else if(catalog[key].price < item.price) {
+				logger.info('	- [missing-deal]: ' + item.title)
+				let message = `*Rising:* El siguiente producto ha subido de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
+				if(messagesSubmited < 10) {
+					messagesSubmited++
+					roboto.sendPhoto(item.image, message)
 				}
 			}
 			
@@ -103,6 +93,8 @@ async function saveAndSubmit(delta, itemsMap) {
 					$set: {
 						price: item.price,
 						link: item.link,
+						image: item.image,
+						store: item.store,
 						available: available
 					}
 				},
@@ -116,14 +108,9 @@ async function saveAndSubmit(delta, itemsMap) {
 				logger.info('	- [no-stock]: ' + item.title)
 			} else {
 				logger.info('	- [new-stock]: ' + item.title)
-				let message = Utils.concatenate(
-					'NUEVO: El siguiente producto ha sido listado: ',
-					item.title, 
-					' con precio $', item.price, ' ',
-					item.link
-				)
+				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
 				if(messagesSubmited < 10) {
-					roboto.submit(message)
+					roboto.sendPhoto(item.image, message)
 					messagesSubmited++
 				}
 			}

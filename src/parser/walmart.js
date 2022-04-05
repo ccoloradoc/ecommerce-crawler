@@ -32,9 +32,9 @@ module.exports = function consumeWalmart(content) {
 					id: item.id,
 					title: item.skuDisplayName,
 					price: item.skuPrice,
-					image: item.imageUrls.large,
-					link: 'https://www.walmart.com.mx' + item.productSeoUrl,
-					submited: false
+					image: 'https://www.walmart.com.mx' + item.imageUrls.large,
+					link: 'https://www.walmart.com.mx' + item.productSeoUrl.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
+					store: 'Walmart'
 				}
 			});
 		
