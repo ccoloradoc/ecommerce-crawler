@@ -1,4 +1,4 @@
-const request = require('request')
+const axios = require('axios')
 const loggerFactory = require('./log/logger')
 
 function Roboto(apiKey, chatId, debugMode) {
@@ -13,31 +13,45 @@ function Roboto(apiKey, chatId, debugMode) {
 Roboto.prototype = {
 	submit: function(message) {
 		let _this = this
+		let endpoint = `${this.sendMessageUrl}&text=${encodeURI(message)}`
 		if(this.debugMode) {
-			this.logger.info(" Submiting: " + message)
+			this.logger.warn(`\tSubmiting: [${endpoint}]`)
 			return
 		}
-		request(`${this.sendMessageUrl}&text=${encodeURI(message)}`, function (err, response, body) {
-			if(err) {
-				_this.logger.error('There was an error while submiting message: ' + err)
-			}
-			_this.logger.info('Receving response from service: ', JSON.parse(body))
-		})
+		return axios.get(endpoint)
+			.then(function (response) {
+				let object = {
+					message_id: response.data.result.message_id,
+					chat_id: response.data.result.chat.username
+				}
+				_this.logger.info('Receving response from service', object)
+				return object
+			})
+			.catch(function (err) {
+				_this.logger.error('There was an error while submiting message', err)
+			})
 	},
 	
 	sendPhoto: function(photo, caption) {
 		let _this = this
 		let endpoint = `${this.sendPhotoUrl}&photo=${encodeURI(photo)}&caption=${encodeURI(caption)}`
 		if(this.debugMode) {
-			this.logger.info(" Submiting: " + endpoint)
+			this.logger.warn(`\tSubmiting: [${endpoint}]`)
 			return
 		}
-		request(endpoint, function (err, response, body) {
-			if(err) {
-				_this.logger.error('There was an error while submiting message: ' + err)
-			}
-			_this.logger.info('Receving response from service: ', JSON.parse(body))
-		})
+		return axios.get(endpoint)
+			.then(function (response) {
+				let object = {
+					message_id: response.data.result.message_id,
+					chat_id: response.data.result.chat.username,
+					file: response.data.result.photo[response.data.result.photo.length - 1]
+				}
+				_this.logger.info('Receving response from service', object)
+				return object
+			})
+			.catch(function (err) {
+				_this.logger.error('There was an error while submiting message', err)
+			})
 	}
 }
 
