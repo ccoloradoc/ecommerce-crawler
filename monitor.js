@@ -117,7 +117,7 @@ async function processItem(sku, item) {
 					})
 			}
 		} else {
-			logger.info(`\NOT AVAILABLE: ${sku} - ${monitor.title} is not available`)
+			logger.info(`\tNOT AVAILABLE: ${sku} - ${monitor.title} is not available`)
 			Monitor.updateOne({
 					id: sku
 				}, {
@@ -131,7 +131,7 @@ async function processItem(sku, item) {
 						logger.error('Error while updating item: ' + targetSku, err)
 						reject(err)
 					}
-					logger.info('Saving:', { id: sku, ...object})
+					logger.info('Saving:', { id: sku})
 					resolve()
 				});
 		}
@@ -158,6 +158,6 @@ cron.schedule(target.cron, () => {
 
 processIt()
 
-cron.schedule("0 * * * *", () => {
+cron.schedule("12 */5 * * *", () => {
 	cleanup()
 });
