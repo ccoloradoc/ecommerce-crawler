@@ -116,6 +116,24 @@ async function processItem(sku, item) {
 							});
 					})
 			}
+		} else {
+			logger.info(`\NOT AVAILABLE: ${sku} - ${monitor.title} is not available`)
+			Monitor.updateOne({
+					id: sku
+				}, {
+					price: 0,
+					monitor: true
+				},  {
+					upsert: false,
+					setDefaultsOnInsert: true
+				}, function(err, response) {
+					if (err) {
+						logger.error('Error while updating item: ' + targetSku, err)
+						reject(err)
+					}
+					logger.info('Saving:', { id: sku, ...object})
+					resolve()
+				});
 		}
 	});
 }
