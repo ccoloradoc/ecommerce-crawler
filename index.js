@@ -1,5 +1,5 @@
 const fs = require('fs')
-const request = require('request');
+const axios = require('axios')
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Utils = require('./src/commons/utils')
@@ -39,17 +39,24 @@ let roboto = new Roboto(
 	config.telegram.debugMode
 )
 
-function hitPage(target) {
+function requestAndParse(target) {
 	let logger = loggerFactory.getInstance()
-	return new Promise((resolve, reject) => {
+	let requestList = []
+	if(typeof target == 'object') {
+		logger.info(`Multiple endpoints requested: [${target.length}]`)
+		requestList = target.map(url => {
+			logger.info(`Submiting request: [${url}]`)
+			return axios.get(url).then(response => response.data).then(Parser)
+		})
+	} else {
 		logger.info(`Submiting request: [${target}]`)
-		request(target, function (err, response, body) {
-			if(err) {
-				logger.error('There was an error while requesting page: ' + err)
-				reject(err)
-			}
-		  	resolve(body)
-	  	})
+		return axios.get(url).then(response => response.data).then(Parser)
+	}
+	return Promise.all(requestList).then(responses => {
+		let join = {}
+		responses.forEach(response => join = {...join, ...response});
+		logger.info(`Returned ${responses.length} and flattered to ${Object.keys(join).length}`)
+		return join;
 	})
 }
 
@@ -63,64 +70,78 @@ async function refreshCatalogFromDatabase() {
 	return map
 }
 
+async function updateItem(id, object) {
+	Item.updateOne({
+			id: id
+		}, object,  {
+			upsert: false,
+			setDefaultsOnInsert: true
+		}, function(err, response) {
+			if (err) {
+				logger.error(`Error while updating item: ${id}`, err)
+			}
+			logger.info('Succesful saving:', { id: id, ...object})
+		});
+}
+
+async function sendPhotoAndUpdate(message, image, item) {
+	roboto.sendPhoto(image, message)
+		.then(message => {
+			let object = { 
+				price: item.price,
+				link: item.link,
+				store: item.store,
+				available: true,
+				fileId: message.file.file_id,
+				messageId: message.message_id,
+				chatId: message.chat_id,
+			}
+			updateItem(item.id, object)
+		})
+}
+
 async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
 	let catalog = await refreshCatalogFromDatabase()
 	// Clean database
 	let ack = await Item.updateMany({source: targetName}, {available: false})
 	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
-	
+
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
+			let message = ''
+			let catalogItem = catalog[key]
+			// catalog[key].price   -> 100%
+			// item.price           -> x?
+			// Increase
+			let increase = 100 - item.price * 100 / catalog[key].price;
 			// Sending message if price is lower
-			if(catalog[key].price > item.price + delta) {
-				logger.info('	- [deal]: ' + item.title)
-				// Send message
-				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
-				if(messagesSubmited < 10) {
-					messagesSubmited++
-					roboto.sendPhoto(item.image, message)
-				}
+			if(increase >= delta) {
+				logger.info('\t[deal]: ' + item.title, item)
+				message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`
+			} else if(increase <= -5) {
+				logger.info('\t[raising]: ' + item.title, item)
+				message = `*Raising:* El siguiente producto ha subido de precio [${item.title}](${item.link}) de $${item.price} a *$${catalogItem.price}* en ${item.store}`
 			}
-			// Updating product price
-			Item.findOneAndUpdate({
-					id: item.id,
-					source: targetName
-				}, {
-					$set: {
-						price: item.price,
-						link: item.link,
-						store: item.store,
-						available: true
-					}
-				},
-				function(err, item) {
-					if (err) logger.error('Error while updating item: ' + item.id)
-				})
+			
+			if(message.length > 0) {
+				let image = ''
+				if(catalogItem.fileId == undefined) {
+					logger.warn(`\tUndefined File: ${key} - ${catalogItem.title}`)
+					image = catalogItem.image
+				} else {
+					image = catalogItem.fileId
+				}
+				sendPhotoAndUpdate(message, image, item)
+			} else {
+				updateItem(key, { available: true})
+			}
 		} else {
-			logger.info('	- [new-stock]: ' + item.title)	
+			logger.info(\t[new-stock]: ' + item.title)	
 			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`		
-			if(messagesSubmited < 10) {
-				roboto.sendPhoto(item.image, message)
-				messagesSubmited++
-			}
-			// Upsert new item with availability
-			Item.findOneAndUpdate({
-					id: item.id,
-					source: targetName
-				}, {
-					...item,
-					source: targetName,
-					store: item.store,
-					available: true
-				}, {
-					upsert: true
-				},
-				function(err, doc) {
-					if (err) logger.error('Error while updating item: ' + item.id)
-				}
-			)
+			let image = item.image
+			sendPhotoAndUpdate(message, image, item)
 		}
 		// Update in memory catalog
 		catalog[key] = item
@@ -131,8 +152,7 @@ async function saveAndSubmit(delta, itemsMap) {
 
 async function processIt() {
 	logger.info('Ranning cronjob');
-	hitPage(target.url)
-		.then(Parser)
+	requestAndParse(target.url)
 		.then(saveAndSubmit.bind(null, target.delta))
 }
 logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
