@@ -36,8 +36,8 @@ Roboto.prototype = {
 		let _this = this
 		let endpoint = `${this.sendPhotoUrl}&photo=${encodeURI(photo)}&caption=${encodeURI(caption)}`
 		if(this.debugMode) {
-			this.logger.warn(`\tSubmiting: [${endpoint}]`)
-			return
+			this.logger.warn(`\tSubmiting: [${caption}]`)
+			return Promise.resolve({})
 		}
 		return axios.get(endpoint)
 			.then(function (response) {

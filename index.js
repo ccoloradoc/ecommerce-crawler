@@ -54,7 +54,15 @@ function requestAndParse(target) {
 	}
 	return Promise.all(requestList).then(responses => {
 		let join = {}
-		responses.forEach(response => join = {...join, ...response});
+		responses.forEach(response => {
+			Object.entries(response).forEach(([key, item]) => {
+				if(join.hasOwnProperty(key)) {
+					logger.warn(`Found duplicated entry: [${key}] - ${item.title} vs ${join[key].title}`)
+				} else {
+					join[key] = item
+				}
+			})
+		});
 		logger.info(`Returned ${responses.length} and flattered to ${Object.keys(join).length}`)
 		return join;
 	})
@@ -78,23 +86,29 @@ async function updateItem(id, object) {
 			setDefaultsOnInsert: true
 		}, function(err, response) {
 			if (err) {
-				logger.error(`Error while updating item: ${id}`, err)
+				logger.error(`\tError while updating item: ${id}`, err)
 			}
-			logger.info('Succesful saving:', { id: id, ...object})
+			logger.info(`\tSuccessfully updating item: ${id}`, object)
 		});
 }
 
 async function sendPhotoAndUpdate(message, image, item) {
 	roboto.sendPhoto(image, message)
 		.then(message => {
+			let telegram = {}
+			if(message.hasOwnProperty('message_id')) {
+				telegram = {
+					fileId: message.file.file_id,
+					messageId: message.message_id,
+					chatId: message.chat_id,
+				}
+			}
 			let object = { 
 				price: item.price,
 				link: item.link,
 				store: item.store,
 				available: true,
-				fileId: message.file.file_id,
-				messageId: message.message_id,
-				chatId: message.chat_id,
+				...telegram
 			}
 			updateItem(item.id, object)
 		})
@@ -102,29 +116,29 @@ async function sendPhotoAndUpdate(message, image, item) {
 
 async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
+	let availableItems = []
 	let catalog = await refreshCatalogFromDatabase()
 	// Clean database
-	let ack = await Item.updateMany({source: targetName}, {available: false})
-	logger.info(`Updating availability ${ack.modifiedCount} of ${ack.matchedCount}`)
+	let cleanAck = await Item.updateMany({ source: targetName }, { available: false })
+	logger.info(`Cleaning availability ${cleanAck.modifiedCount} of ${cleanAck.matchedCount}`)
 
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
-			let message = ''
 			let catalogItem = catalog[key]
+			let message = ''
 			// catalog[key].price   -> 100%
 			// item.price           -> x?
 			// Increase
 			let increase = 100 - item.price * 100 / catalog[key].price;
 			// Sending message if price is lower
 			if(increase >= delta) {
-				logger.info('\t[deal]: ' + item.title, item)
-				message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`
+				logger.info(`\t[deal]: ${item.title}`, item)
+				message = `*Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`
 			} else if(increase <= -5) {
-				logger.info('\t[raising]: ' + item.title, item)
-				message = `*Raising:* El siguiente producto ha subido de precio [${item.title}](${item.link}) de $${item.price} a *$${catalogItem.price}* en ${item.store}`
-			}
-			
+				logger.info(`\t[raising]: ${item.title}`, item)
+				message = `*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`
+			}			
 			if(message.length > 0) {
 				let image = ''
 				if(catalogItem.fileId == undefined) {
@@ -135,10 +149,10 @@ async function saveAndSubmit(delta, itemsMap) {
 				}
 				sendPhotoAndUpdate(message, image, item)
 			} else {
-				updateItem(key, { available: true})
+				availableItems.push(key)
 			}
 		} else {
-			logger.info(\t[new-stock]: ' + item.title)	
+			logger.info(`\t[new-stock]: ${item.title}`)	
 			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`		
 			let image = item.image
 			sendPhotoAndUpdate(message, image, item)
@@ -146,6 +160,9 @@ async function saveAndSubmit(delta, itemsMap) {
 		// Update in memory catalog
 		catalog[key] = item
 	})
+	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true })
+	logger.info(`Updating availability: requested ${availableItems.length} resolved ${ack.modifiedCount} of ${ack.matchedCount}`, ack)
+	
 	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
 	return catalog
 }
