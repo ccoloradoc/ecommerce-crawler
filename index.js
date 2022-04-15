@@ -50,7 +50,7 @@ function requestAndParse(target) {
 		})
 	} else {
 		logger.info(`Submiting request: [${target}]`)
-		return axios.get(url).then(response => response.data).then(Parser)
+		return axios.get(target).then(response => response.data).then(Parser)
 	}
 	return Promise.all(requestList).then(responses => {
 		let join = {}
