@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const Utils = require('../commons/utils')
 const loggerFactory = require('../log/logger')
-const MLRegex = /mercadolibre.com.mx\/(\w+-\w+)/
+const MLRegex = /mercadolibre.com.mx\/.*(MLM\-*\w+)/
 
 function parseId(link) {
 	let regexResult = link.match(MLRegex)

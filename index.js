@@ -79,17 +79,22 @@ async function refreshCatalogFromDatabase() {
 }
 
 async function updateItem(id, object) {
-	Item.updateOne({
-			id: id
-		}, object,  {
-			upsert: false,
-			setDefaultsOnInsert: true
-		}, function(err, response) {
+	Item.findOneAndUpdate({
+			id: id,
+			source: targetName
+		}, {
+			$set: {
+				...object
+			}
+		}, {
+			upsert: true
+		},
+		function(err, item) {
 			if (err) {
 				logger.error(`\tError while updating item: ${id}`, err)
 			}
 			logger.info(`\tSuccessfully updating item: ${id}`, object)
-		});
+		})
 }
 
 async function sendPhotoAndUpdate(message, image, item) {
