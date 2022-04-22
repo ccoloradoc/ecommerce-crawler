@@ -8,7 +8,10 @@ const itemSchema = mongoose.Schema({
 	link: String,
 	source: String,
 	store: String,
-	available: Boolean
+	available: Boolean,
+	fileId: String,
+	messageId: String,
+	chatId: String
 }, {
 	timestamps: true
 });
