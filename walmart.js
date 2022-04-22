@@ -51,87 +51,102 @@ async function refreshCatalogFromDatabase() {
 	return map
 }
 
+async function updateItem(id, object) {
+	logger.info(`\tAttempting to update: ${id}`, object)
+	Item.findOneAndUpdate({
+			id: id,
+			source: targetName
+		}, {
+			$set: {
+				...object
+			}
+		}, {
+			upsert: true
+		},
+		function(err, item) {
+			if (err) {
+				logger.error(`\tError while updating item: ${id}`, err)
+			}
+			logger.info(`\tSuccessfully updating item: ${id}`, object)
+		})
+}
+
+async function sendPhotoAndUpdate(message, image, item) {
+	roboto.sendPhoto(image, message)
+		.then(message => {
+			let telegram = {}
+			if(message && message.hasOwnProperty('message_id')) {
+				telegram = {
+					fileId: message.file.file_id,
+					messageId: message.message_id,
+					chatId: message.chat_id,
+				}
+			}
+			let object = { 
+				title: item.title,
+				image: item.image,
+				price: item.price,
+				link: item.link,
+				store: item.store,
+				available: true,
+				...telegram
+			}
+			updateItem(item.id, object)
+		})
+}
+
 async function saveAndSubmit(delta, itemsMap) {
 	let messagesSubmited = 0
+	let availableItems = []
 	let catalog = await refreshCatalogFromDatabase()
 	
 	Object.entries(itemsMap).forEach(([key, item]) => {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
+			let catalogItem = catalog[key]
+			let increase = 100 - item.price * 100 / catalog[key].price
 			let available = true
+			let message = ''
 			if(item.price == 0) {
 				logger.info('	- [no-stock]: ' + item.title)
 				available = false
 			} else if(catalog[key].price == 0) {
 				logger.info('	- [new-stock]: ' + item.title)
-				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
-				if(messagesSubmited < 10) {
-					messagesSubmited++
-					roboto.sendPhoto(item.image, message)
-				}
-			} else if(catalog[key].price > item.price + delta) {
+				message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
+			} else if(increase > delta) {
 				logger.info('	- [deal]: ' + item.title)
-				let message = `*Deal:* El siguiente producto ha bajado de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
-				if(messagesSubmited < 10) {
-					messagesSubmited++
-					roboto.sendPhoto(item.image, message)
-				}
-			} else if(catalog[key].price < item.price) {
+				message = `*Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
+			} else if(increase < -delta) {
 				logger.info('	- [missing-deal]: ' + item.title)
-				let message = `*Rising:* El siguiente producto ha subido de precio [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
-				if(messagesSubmited < 10) {
-					messagesSubmited++
-					roboto.sendPhoto(item.image, message)
-				}
+				message = `*Rising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 			}
 			
-			// Updating product price
-			Item.findOneAndUpdate({
-					id: item.id,
-					source: targetName
-				}, {
-					$set: {
-						price: item.price,
-						link: item.link,
-						image: item.image,
-						store: item.store,
-						available: available
-					}
-				},
-				function(err, item) {
-					if (err) logger.error('Error while updating item: ' + item.id)
-				})
+			if(message.length > 0) {
+				let image = ''
+				if(catalogItem.fileId == undefined) {
+					logger.warn(`\tUndefined File: ${key} - ${catalogItem.title}`)
+					image = catalogItem.image
+				} else {
+					image = catalogItem.fileId
+				}
+				sendPhotoAndUpdate(message, image, item)
+			} else {
+				availableItems.push(key)
+			}
 		} else {
-			let available = true
 			if(item.price == 0) {
-				available = false
 				logger.info('	- [no-stock]: ' + item.title)
 			} else {
 				logger.info('	- [new-stock]: ' + item.title)
 				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
-				if(messagesSubmited < 10) {
-					roboto.sendPhoto(item.image, message)
-					messagesSubmited++
-				}
+				let image = item.image
+				sendPhotoAndUpdate(message, image, item)
 			}
-			// Upsert new item with availability
-			Item.findOneAndUpdate({
-					id: item.id,
-					source: targetName
-				}, {
-					...item,
-					source: targetName,
-					available: available
-				}, {
-					upsert: true
-				},
-				function(err, doc) {
-					if (err) logger.error('Error while updating item: ' + item.id)
-				}
-			)
 		}
 		catalog[key] = item
 	})
+	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true })
+	logger.info(`Updating availability: requested ${availableItems.length} resolved ${ack.modifiedCount} of ${ack.matchedCount}`, ack)
 	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
 	return catalog
 }
@@ -144,6 +159,8 @@ async function processIt() {
 		requestHandler(target.url, '&page=2')
 			.then(Parser),
 		requestHandler(target.url, '&page=3')
+			.then(Parser),
+		requestHandler(target.url, '&page=4')
 			.then(Parser)
 	])
 	.then(MapUtils.mergeMaps)

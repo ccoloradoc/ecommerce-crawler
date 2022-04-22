@@ -1,5 +1,5 @@
 const loggerFactory = require('../log/logger')
-const urlFilterRegex = /nerf|muneca|monopoly|peluche|muggs|de-mesa/
+const urlFilterRegex = /nerf|muneca|monopoly|peluche|muggs|de-mesa|milton|gaming/
 const brandFilterRegex = /funko|gaming/
 const site = 'https://www.walmart.com.mx'
 
@@ -50,6 +50,7 @@ module.exports = function consumeWalmart(content) {
 							link: site + variant.url.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
 							store: 'Walmart'
 						}
+						// logger.warn('Variant ', itemsMap[variant.id])
 					});
 				}
 			});
