@@ -109,6 +109,8 @@ async function sendPhotoAndUpdate(message, image, item) {
 				}
 			}
 			let object = { 
+				title: item.title,
+				image: item.image,
 				price: item.price,
 				link: item.link,
 				store: item.store,
@@ -140,7 +142,7 @@ async function saveAndSubmit(delta, itemsMap) {
 			if(increase >= delta) {
 				logger.info(`\t[deal]: ${item.title}`, item)
 				message = `*Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`
-			} else if(increase <= -5) {
+			} else if(increase <= -delta) {
 				logger.info(`\t[raising]: ${item.title}`, item)
 				message = `*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`
 			}			

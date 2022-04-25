@@ -39,19 +39,20 @@ Roboto.prototype = {
 			this.logger.warn(`\tSubmiting: [${caption}]`)
 			return Promise.resolve({})
 		}
+		
 		return axios.get(endpoint)
-			.then(function (response) {
-				let object = {
-					message_id: response.data.result.message_id,
-					chat_id: response.data.result.chat.username,
-					file: response.data.result.photo[response.data.result.photo.length - 1]
-				}
-				_this.logger.info('Receving response from service', object)
-				return object
-			})
-			.catch(function (err) {
-				_this.logger.error('There was an error while submiting message', err)
-			})
+				.then(function (response) {
+					let object = {
+						message_id: response.data.result.message_id,
+						chat_id: response.data.result.chat.username,
+						file: response.data.result.photo[response.data.result.photo.length - 1]
+					}
+					_this.logger.info('Receving response from service', object)
+					return object
+				})
+				.catch(function (err) {
+					_this.logger.error('There was an error while submiting message', err.response.data)
+				})
 	}
 }
 
