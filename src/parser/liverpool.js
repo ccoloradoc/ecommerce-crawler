@@ -17,12 +17,13 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 		})
 		.forEach((item, i) => {
 			let id = item.allMeta.id
+			let titleDashed = item.allMeta.title.replace(/\s+/g, "-")
 			itemsMap[id] = {
 				id: id,
 				title: item.allMeta.title,
 				price: item.allMeta.maximumPromoPrice || item.allMeta.maximumListPrice,
 				image: item.allMeta.productImages[0].largeImage,
-				link: 'https://www.liverpool.com.mx/tienda/pdp/' + item.allMeta.title.replace(/\s+/g, "-") + '/' + id,
+				link: `https://www.liverpool.com.mx/tienda/pdp/${titleDashed}/${id}`,
 				brand: item.allMeta.brand,
 				store: 'Liverpool'
 			}
