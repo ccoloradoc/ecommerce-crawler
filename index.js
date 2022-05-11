@@ -156,6 +156,8 @@ async function saveAndSubmit(delta, itemsMap) {
 				}
 				if(catalogItem.alarm) {
 					sendPhotoAndUpdate(message, image, item)
+				} else {
+					updateItem(item.id, item)
 				}
 			} else {
 				availableItems.push(key)
