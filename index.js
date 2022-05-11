@@ -145,6 +145,7 @@ async function saveAndSubmit(delta, itemsMap) {
 			} else if(increase <= -delta) {
 				logger.info(`\t[raising]: ${item.title}`, item)
 				//message = `*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`
+				updateItem(item.id, item)
 			}			
 			if(message.length > 0) {
 				let image = ''
