@@ -154,7 +154,7 @@ async function saveAndSubmit(delta, itemsMap) {
 				} else {
 					image = catalogItem.fileId
 				}
-				if(catalogItem,alarm) {
+				if(catalogItem.alarm) {
 					sendPhotoAndUpdate(message, image, item)
 				}
 			} else {
