@@ -97,8 +97,8 @@ async function updateItem(id, object) {
 		})
 }
 
-async function sendPhotoAndUpdate(message, image, item) {
-	if(item.alarm) {
+async function sendPhotoAndUpdate(message, image, item, alarm) {
+	if(alarm) {
 		roboto.sendPhoto(image, message)
 			.then(message => {
 				let telegram = {}
@@ -159,21 +159,24 @@ async function saveAndSubmit(delta, itemsMap) {
 				sendPhotoAndUpdate(
 					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
 					identifyImage(key, catalogItem), 
-					item
+					item,
+					catalogItem.alarm
 				)
 			} else if(increase >= delta) { // Sending message if price is lower
 				logger.info(`\t[deal]: ${item.title}`, item)
 				sendPhotoAndUpdate(
 					`*Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`, 
 					identifyImage(key, catalogItem), 
-					item
+					item,
+					catalogItem.alarm
 				)
 			} else if(increase <= -delta) {
 				logger.info(`\t[raising]: ${item.title}`, item)
 				sendPhotoAndUpdate(
 					`*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`,
 					identifyImage(key, catalogItem), 
-					item
+					item,
+					catalogItem.alarm
 				)
 			} else if(item.price != catalogItem.price) {
 				logger.info(`\t[update]: ${item.title} ${item.price} vs ${catalogItem.price}`, item)
@@ -186,7 +189,8 @@ async function saveAndSubmit(delta, itemsMap) {
 			sendPhotoAndUpdate(
 				`*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
 				item.image, 
-				item
+				item,
+				true
 			)
 		}
 		// Update in memory catalog
