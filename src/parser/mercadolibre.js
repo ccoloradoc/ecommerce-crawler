@@ -35,7 +35,8 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				price: Utils.clean(price),
 				image: image,
 				link: link.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
-				store: 'Mercado Libre'
+				store: 'Mercado Libre',
+				monitor: true
 			}
 	    })
 		logger.info('Found ' + Object.entries(itemsMap).length + ' elements')

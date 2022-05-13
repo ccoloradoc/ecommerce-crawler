@@ -28,7 +28,8 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				brand: brand.trim(),
 				image: image,
 				link: `https://www.elpalaciodehierro.com/${link}`,
-				store: 'Palacio de hierro'
+				store: 'Palacio de hierro',
+				monitor: true
 			}
 		});
 

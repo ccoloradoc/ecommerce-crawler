@@ -25,7 +25,8 @@ module.exports = function consumeMercadoLibreResultPage(content) {
 				image: item.allMeta.productImages[0].largeImage,
 				link: `https://www.liverpool.com.mx/tienda/pdp/${titleDashed}/${id}`,
 				brand: item.allMeta.brand,
-				store: 'Liverpool'
+				store: 'Liverpool',
+				monitor: true
 			}
 		});
 		logger.info('Found ' + Object.entries(itemsMap).length + ' elements')
