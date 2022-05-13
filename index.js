@@ -176,7 +176,7 @@ async function saveAndSubmit(delta, itemsMap) {
 					`*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`,
 					identifyImage(key, catalogItem), 
 					item,
-					catalogItem.alarm
+					false //catalogItem.alarm
 				)
 			} else if(item.price != catalogItem.price) {
 				logger.info(`\t[update]: ${item.title} ${item.price} vs ${catalogItem.price}`, item)
