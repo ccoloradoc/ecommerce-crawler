@@ -165,7 +165,7 @@ async function saveAndSubmit(delta, itemsMap) {
 			} else if(item.price <= catalogItem.threshold) {
 				logger.info(`\t[supa-deal]: ${item.title}`, item)
 				sendPhotoAndUpdate(
-					`*Super Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`, 
+					`*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`, 
 					identifyImage(key, catalogItem), 
 					item,
 					catalogItem.alarm

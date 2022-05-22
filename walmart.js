@@ -115,7 +115,7 @@ async function saveAndSubmit(delta, itemsMap) {
 				message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
 			} else if(item.price <= catalog[key].threshold) {
 				logger.info('	- [supa-deal]: ' + item.title)
-				message = `*Super Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
+				message = `*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`
 			} else if(increase > delta) {
 				logger.info('	- [deal]: ' + item.title)
 				message = `*Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
