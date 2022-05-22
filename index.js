@@ -7,6 +7,7 @@ const Roboto = require('./src/roboto')
 const loggerFactory = require('./src/log/logger')
 const Item = require('./src/model/item')
 const config = require('./crawler.config')
+const moment = require('moment')
 
 // Obtaining configuration details
 const targets = Object.keys(config.targets)
@@ -116,6 +117,7 @@ async function sendPhotoAndUpdate(message, image, item, alarm) {
 					link: item.link,
 					store: item.store,
 					available: true,
+					lastSubmitedAt: Date.now(),
 					...telegram
 				}
 				updateItem(item.id, object)
@@ -144,7 +146,7 @@ function identifyImage(key, catalogItem) {
 	}
 }
 
-async function saveAndSubmit(delta, itemsMap) {
+async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 	let messagesSubmited = 0
 	let availableItems = []
 	let catalog = await refreshCatalogFromDatabase()
@@ -166,13 +168,17 @@ async function saveAndSubmit(delta, itemsMap) {
 					catalogItem.alarm
 				)
 			} else if(item.price <= catalogItem.threshold) {
-				logger.info(`\t[supa-deal]: ${item.title}`, item)
-				sendPhotoAndUpdate(
-					`*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`, 
-					identifyImage(key, catalogItem), 
-					item,
-					catalogItem.alarm
-				)
+				var duration = moment.duration(moment(Date.now()).diff(catalogItem.lastSubmitedAt));
+				var hours = duration.asHours();
+				logger.info(`\t[supa-deal]: ${item.title}, hours: ${hours}`, item)
+				if(hours >= telegramThreshold) {
+					sendPhotoAndUpdate(
+						`*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`, 
+						identifyImage(key, catalogItem), 
+						item,
+						catalogItem.alarm
+					)
+				}
 			} else if(increase >= delta) { // Sending message if price is lower
 				logger.info(`\t[deal]: ${item.title}`, item)
 				sendPhotoAndUpdate(
@@ -207,7 +213,7 @@ async function saveAndSubmit(delta, itemsMap) {
 		// Update in memory catalog
 		catalog[key] = item
 	})
-	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true })
+	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true, availableAt: Date.now() })
 	logger.info(`Updating availability: requested ${availableItems.length} resolved ${ack.modifiedCount} of ${ack.matchedCount}`, ack)
 	
 	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
@@ -217,7 +223,7 @@ async function saveAndSubmit(delta, itemsMap) {
 async function processIt() {
 	logger.info('Ranning cronjob');
 	requestAndParse(target.url)
-		.then(saveAndSubmit.bind(null, target.delta))
+		.then(saveAndSubmit.bind(null, target.delta, target.telegramThreshold))
 }
 logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
 cron.schedule(target.cron, () => {

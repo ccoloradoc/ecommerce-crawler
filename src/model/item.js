@@ -14,7 +14,8 @@ const itemSchema = mongoose.Schema({
 	chatId: String,
 	alarm: Boolean,
 	threshold: Number,
-	availableAt: Date
+	availableAt: Date,
+	lastSubmitedAt: Date
 }, {
 	timestamps: true
 });
