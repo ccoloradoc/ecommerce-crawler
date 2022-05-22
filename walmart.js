@@ -118,7 +118,7 @@ async function saveAndSubmit(delta, itemsMap) {
 				message = `*Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 			} else if(increase < -delta) {
 				logger.info('	- [missing-deal]: ' + item.title)
-				message = `*Rising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
+				//message = `*Rising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 			}
 			
 			if(message.length > 0) {
@@ -129,7 +129,11 @@ async function saveAndSubmit(delta, itemsMap) {
 				} else {
 					image = catalogItem.fileId
 				}
-				sendPhotoAndUpdate(message, image, item)
+				if(catalogItem.alarm) {
+					sendPhotoAndUpdate(message, image, item)
+				} else {
+					updateItem(item.id, item)
+				}
 			} else {
 				availableItems.push(key)
 			}

@@ -70,7 +70,7 @@ function requestAndParse(target) {
 
 async function refreshCatalogFromDatabase() {
 	let map = {}
-	let items = await Item.find({source: targetName, available: true})
+	let items = await Item.find({source: targetName})
 	items.forEach((item, i) => {
 		map[item.id] = item
 	});
@@ -97,28 +97,48 @@ async function updateItem(id, object) {
 		})
 }
 
-async function sendPhotoAndUpdate(message, image, item) {
-	roboto.sendPhoto(image, message)
-		.then(message => {
-			let telegram = {}
-			if(message.hasOwnProperty('message_id')) {
-				telegram = {
-					fileId: message.file.file_id,
-					messageId: message.message_id,
-					chatId: message.chat_id,
+async function sendPhotoAndUpdate(message, image, item, alarm) {
+	if(alarm) {
+		roboto.sendPhoto(image, message)
+			.then(message => {
+				let telegram = {}
+				if(message.hasOwnProperty('message_id')) {
+					telegram = {
+						fileId: message.file.file_id,
+						messageId: message.message_id,
+						chatId: message.chat_id,
+					}
 				}
-			}
-			let object = { 
-				title: item.title,
-				image: item.image,
-				price: item.price,
-				link: item.link,
-				store: item.store,
-				available: true,
-				...telegram
-			}
-			updateItem(item.id, object)
+				let object = { 
+					title: item.title,
+					image: item.image,
+					price: item.price,
+					link: item.link,
+					store: item.store,
+					available: true,
+					...telegram
+				}
+				updateItem(item.id, object)
+			})
+	} else {
+		updateItem(item.id, { 
+			title: item.title,
+			image: item.image,
+			price: item.price,
+			link: item.link,
+			store: item.store,
+			available: true
 		})
+	}
+}
+
+function identifyImage(key, catalogItem) {
+	if(catalogItem.fileId == undefined) {
+		logger.warn(`\tUndefined File: ${key} - ${catalogItem.title}`)
+		return catalogItem.image
+	} else {
+		return catalogItem.fileId
+	}
 }
 
 async function saveAndSubmit(delta, itemsMap) {
@@ -133,36 +153,45 @@ async function saveAndSubmit(delta, itemsMap) {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
 			let catalogItem = catalog[key]
-			let message = ''
-			// catalog[key].price   -> 100%
-			// item.price           -> x?
-			// Increase
-			let increase = 100 - item.price * 100 / catalog[key].price;
-			// Sending message if price is lower
-			if(increase >= delta) {
+			let increase = 100 - item.price * 100 / catalogItem.price
+			if(catalogItem.available == false) {
+				logger.info(`\t[restoke]: ${item.title}`, item)
+				sendPhotoAndUpdate(
+					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
+					identifyImage(key, catalogItem), 
+					item,
+					catalogItem.alarm
+				)
+			} else if(increase >= delta) { // Sending message if price is lower
 				logger.info(`\t[deal]: ${item.title}`, item)
-				message = `*Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`
+				sendPhotoAndUpdate(
+					`*Deal:* El siguiente producto ha bajado ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalogItem.price} a *$${item.price}* en ${item.store}`, 
+					identifyImage(key, catalogItem), 
+					item,
+					catalogItem.alarm
+				)
 			} else if(increase <= -delta) {
 				logger.info(`\t[raising]: ${item.title}`, item)
-				message = `*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`
-			}			
-			if(message.length > 0) {
-				let image = ''
-				if(catalogItem.fileId == undefined) {
-					logger.warn(`\tUndefined File: ${key} - ${catalogItem.title}`)
-					image = catalogItem.image
-				} else {
-					image = catalogItem.fileId
-				}
-				sendPhotoAndUpdate(message, image, item)
+				sendPhotoAndUpdate(
+					`*Raising:* El siguiente producto ha subido ${Math.floor(-increase)}% [${item.title}](${item.link}) del $${catalogItem.price} a *$${item.price}* en ${item.store}`,
+					identifyImage(key, catalogItem), 
+					item,
+					false //catalogItem.alarm
+				)
+			} else if(item.price != catalogItem.price) {
+				logger.info(`\t[update]: ${item.title} ${item.price} vs ${catalogItem.price}`, item)
+				updateItem(item.id, item)
 			} else {
 				availableItems.push(key)
 			}
 		} else {
 			logger.info(`\t[new-stock]: ${item.title}`)	
-			let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`		
-			let image = item.image
-			sendPhotoAndUpdate(message, image, item)
+			sendPhotoAndUpdate(
+				`*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
+				item.image, 
+				item,
+				true
+			)
 		}
 		// Update in memory catalog
 		catalog[key] = item

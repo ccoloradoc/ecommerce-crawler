@@ -11,7 +11,8 @@ const itemSchema = mongoose.Schema({
 	available: Boolean,
 	fileId: String,
 	messageId: String,
-	chatId: String
+	chatId: String,
+	alarm: Boolean
 }, {
 	timestamps: true
 });

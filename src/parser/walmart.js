@@ -38,7 +38,8 @@ module.exports = function consumeWalmart(content) {
 					price: item.skuPrice,
 					image: site + item.imageUrls.large,
 					link: site + item.productSeoUrl.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
-					store: 'Walmart'
+					store: 'Walmart',
+					monitor: true
 				}
 				if(item.hasOwnProperty('variants')) {
 					item.variants.forEach((variant, i) => {
@@ -48,9 +49,10 @@ module.exports = function consumeWalmart(content) {
 							price: variant.price,
 							image: site + variant.smallImage,
 							link: site + variant.url.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
-							store: 'Walmart'
+							store: 'Walmart',
+							monitor: true
 						}
-						// logger.warn('Variant ', itemsMap[variant.id])
+						logger.warn('Variant ', itemsMap[variant.id])
 					});
 				}
 			});
