@@ -1,5 +1,6 @@
 const fs = require('fs')
 const axios = require('axios')
+const axiosRetry = require('axios-retry')
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Utils = require('./src/commons/utils')
@@ -8,6 +9,8 @@ const loggerFactory = require('./src/log/logger')
 const Item = require('./src/model/item')
 const config = require('./crawler.config')
 const moment = require('moment')
+
+axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
 // Obtaining configuration details
 const targets = Object.keys(config.targets)

@@ -10,11 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
+    "axios-retry": "^3.2.5",
     "cheerio": "^1.0.0-rc.10",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.8",
     "node-cron": "^3.0.0",
     "request": "^2.88.2",
+    "save": "^2.5.0",
     "winston": "^3.6.0"
   }
 }
