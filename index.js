@@ -120,6 +120,9 @@ async function sendPhotoAndUpdate(message, image, item, alarm) {
 				}
 				updateItem(item.id, object)
 			})
+			.catch(function (err) {
+				
+			})
 	} else {
 		updateItem(item.id, { 
 			title: item.title,
