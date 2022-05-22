@@ -113,6 +113,9 @@ async function saveAndSubmit(delta, itemsMap) {
 			} else if(catalog[key].price == 0) {
 				logger.info('	- [new-stock]: ' + item.title)
 				message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
+			} else if(item.price <= catalog[key].threshold) {
+				logger.info('	- [supa-deal]: ' + item.title)
+				message = `*Super Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
 			} else if(increase > delta) {
 				logger.info('	- [deal]: ' + item.title)
 				message = `*Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
