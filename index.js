@@ -181,6 +181,8 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 						item,
 						catalogItem.alarm
 					)
+				} else {
+					availableItems.push(key)
 				}
 			} else if(increase >= delta) { // Sending message if price is lower
 				logger.info(`\t[deal]: ${item.title}`, item)
