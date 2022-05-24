@@ -103,31 +103,44 @@ async function updateItem(id, object) {
 
 async function sendPhotoAndUpdate(message, image, item, alarm) {
 	if(alarm) {
-		roboto.sendPhoto(image, message)
-			.then(message => {
-				let telegram = {}
-				if(message.hasOwnProperty('message_id')) {
-					telegram = {
-						fileId: message.file.file_id,
-						messageId: message.message_id,
-						chatId: message.chat_id,
+		try {
+			roboto.sendPhoto(image, message)
+				.then(message => {
+					let telegram = {}
+					if(message.hasOwnProperty('message_id')) {
+						telegram = {
+							fileId: message.file.file_id,
+							messageId: message.message_id,
+							chatId: message.chat_id,
+						}
 					}
-				}
-				let object = { 
-					title: item.title,
-					image: item.image,
-					price: item.price,
-					link: item.link,
-					store: item.store,
-					available: true,
-					lastSubmitedAt: Date.now(),
-					...telegram
-				}
-				updateItem(item.id, object)
-			})
-			.catch(function (err) {
-				
-			})
+					let object = { 
+						title: item.title,
+						image: item.image,
+						price: item.price,
+						link: item.link,
+						store: item.store,
+						available: true,
+						lastSubmitedAt: Date.now(),
+						...telegram
+					}
+					updateItem(item.id, object)
+				})
+				.catch(function (err) {
+					let object = { 
+						title: item.title,
+						image: item.image,
+						price: item.price,
+						link: item.link,
+						store: item.store,
+						available: true,
+						lastSubmitedAt: Date.now()
+					}
+					updateItem(item.id, object)
+				})
+		} catch(err) {
+			logger.warn(`\try-catch: There has been an error`, err)
+		}
 	} else {
 		updateItem(item.id, { 
 			title: item.title,
@@ -163,7 +176,7 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 			let catalogItem = catalog[key]
 			let increase = 100 - item.price * 100 / catalogItem.price
 			if(catalogItem.available == false) {
-				logger.info(`\t[restoke]: ${item.title}`, item)
+				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt})
 				sendPhotoAndUpdate(
 					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
 					identifyImage(key, catalogItem), 

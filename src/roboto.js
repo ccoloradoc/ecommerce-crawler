@@ -28,7 +28,7 @@ Roboto.prototype = {
 				return Promise.resolve(object)
 			})
 			.catch(function (err) {
-				_this.logger.error('There was an error while submiting message', endpoint, err)
+				_this.logger.error('There was an error while submiting message', {...err.response.data, message: message})
 				return Promise.reject({ err: err })
 			})
 	},
@@ -52,7 +52,7 @@ Roboto.prototype = {
 					return Promise.resolve(object)
 				})
 				.catch(function (err) {
-					_this.logger.error('There was an error while submiting message', err.response.data)
+					_this.logger.error('There was an error while submiting message', {...err.response.data, photo: photo, caption: caption})
 					return Promise.reject({ err: err })
 				})
 	}
