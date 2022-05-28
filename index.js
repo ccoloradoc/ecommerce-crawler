@@ -174,11 +174,12 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
 			let catalogItem = catalog[key]
+			let availableAtText = moment(catalogItem.availableAt).format("ddd, h:mmA")
 			let increase = 100 - item.price * 100 / catalogItem.price
 			if(catalogItem.available == false) {
 				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt})
 				sendPhotoAndUpdate(
-					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
+					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store} [${availableAtText}]`, 
 					identifyImage(key, catalogItem), 
 					item,
 					catalogItem.alarm
