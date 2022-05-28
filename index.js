@@ -10,6 +10,7 @@ const Item = require('./src/model/item')
 const config = require('./crawler.config')
 const moment = require('moment')
 
+moment.locale('es-mx');
 axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
 // Obtaining configuration details
@@ -174,12 +175,12 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
 			let catalogItem = catalog[key]
-			let availableAtText = moment(catalogItem.availableAt).format("ddd, h:mmA")
+			let availableAtText = moment(catalogItem.availableAt).tz('America/Mexico_City').format("Do [de] MMMM [a las] h:mmA")
 			let increase = 100 - item.price * 100 / catalogItem.price
 			if(catalogItem.available == false) {
 				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt})
 				sendPhotoAndUpdate(
-					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store} [${availableAtText}]`, 
+					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}. Disponible el ${availableAtText}`, 
 					identifyImage(key, catalogItem), 
 					item,
 					catalogItem.alarm
