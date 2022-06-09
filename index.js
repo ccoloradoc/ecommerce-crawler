@@ -163,6 +163,10 @@ function identifyImage(key, catalogItem) {
 	}
 }
 
+function durationSince(since) {
+	return moment.duration(moment(Date.now()).diff(since));
+}
+
 async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 	let messagesSubmited = 0
 	let availableItems = []
@@ -178,15 +182,21 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 			let availableAtText = moment(catalogItem.availableAt).tz('America/Mexico_City').format("Do [de] MMMM [a las] h:mmA")
 			let increase = 100 - item.price * 100 / catalogItem.price
 			if(catalogItem.available == false) {
-				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt})
-				sendPhotoAndUpdate(
-					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}. Disponible el ${availableAtText}`, 
-					identifyImage(key, catalogItem), 
-					item,
-					catalogItem.alarm
-				)
+				var availableDuration = durationSince(catalogItem.availableAt);
+				var minutes = availableDuration.asMinutes();
+				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt, minutes: minutes})
+				if(minutes > 12) {
+					sendPhotoAndUpdate(
+						`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}. Disponible el ${availableAtText}`, 
+						identifyImage(key, catalogItem), 
+						item,
+						catalogItem.alarm
+					)
+				} else {
+					availableItems.push(key)
+				}
 			} else if(item.price <= catalogItem.threshold) {
-				var duration = moment.duration(moment(Date.now()).diff(catalogItem.lastSubmitedAt));
+				var duration = durationSince(catalogItem.lastSubmitedAt);
 				var hours = duration.asHours();
 				logger.info(`\t[supa-deal]: ${item.title}, hours: ${hours}`, item)
 				if(hours >= telegramThreshold) {
