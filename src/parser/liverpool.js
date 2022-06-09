@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const Utils = require('../commons/utils')
 const loggerFactory = require('../log/logger')
-const filterRegex = /FUNKO|POP|LEGO|PLAYSKOOL|MECHANIX|STUDIOS/
+const filterRegex = /LEGO|PLAYSKOOL|MECHANIX|STUDIOS/
 
 module.exports = function consumeMercadoLibreResultPage(content) {
 	const logger = loggerFactory.getInstance()

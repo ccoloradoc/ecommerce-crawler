@@ -25,10 +25,11 @@ Roboto.prototype = {
 					chat_id: response.data.result.chat.username
 				}
 				_this.logger.info('Receving response from service', object)
-				return object
+				return Promise.resolve(object)
 			})
 			.catch(function (err) {
-				_this.logger.error('There was an error while submiting message', err)
+				_this.logger.error('There was an error while submiting message', {...err.response.data, message: message})
+				return Promise.reject({ err: err })
 			})
 	},
 	
@@ -48,10 +49,11 @@ Roboto.prototype = {
 						file: response.data.result.photo[response.data.result.photo.length - 1]
 					}
 					_this.logger.info('Receving response from service', object)
-					return object
+					return Promise.resolve(object)
 				})
 				.catch(function (err) {
-					_this.logger.error('There was an error while submiting message', err.response.data)
+					_this.logger.error('There was an error while submiting message', {...err.response.data, photo: photo, caption: caption})
+					return Promise.reject({ err: err })
 				})
 	}
 }

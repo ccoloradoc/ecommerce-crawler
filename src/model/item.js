@@ -12,7 +12,10 @@ const itemSchema = mongoose.Schema({
 	fileId: String,
 	messageId: String,
 	chatId: String,
-	alarm: Boolean
+	alarm: Boolean,
+	threshold: Number,
+	availableAt: Date,
+	lastSubmitedAt: Date
 }, {
 	timestamps: true
 });

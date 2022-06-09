@@ -1,5 +1,6 @@
 const fs = require('fs')
 const axios = require('axios')
+const axiosRetry = require('axios-retry')
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Utils = require('./src/commons/utils')
@@ -7,6 +8,10 @@ const Roboto = require('./src/roboto')
 const loggerFactory = require('./src/log/logger')
 const Item = require('./src/model/item')
 const config = require('./crawler.config')
+const moment = require('moment')
+
+moment.locale('es-mx');
+axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
 // Obtaining configuration details
 const targets = Object.keys(config.targets)
@@ -99,27 +104,44 @@ async function updateItem(id, object) {
 
 async function sendPhotoAndUpdate(message, image, item, alarm) {
 	if(alarm) {
-		roboto.sendPhoto(image, message)
-			.then(message => {
-				let telegram = {}
-				if(message.hasOwnProperty('message_id')) {
-					telegram = {
-						fileId: message.file.file_id,
-						messageId: message.message_id,
-						chatId: message.chat_id,
+		try {
+			roboto.sendPhoto(image, message)
+				.then(message => {
+					let telegram = {}
+					if(message.hasOwnProperty('message_id')) {
+						telegram = {
+							fileId: message.file.file_id,
+							messageId: message.message_id,
+							chatId: message.chat_id,
+						}
 					}
-				}
-				let object = { 
-					title: item.title,
-					image: item.image,
-					price: item.price,
-					link: item.link,
-					store: item.store,
-					available: true,
-					...telegram
-				}
-				updateItem(item.id, object)
-			})
+					let object = { 
+						title: item.title,
+						image: item.image,
+						price: item.price,
+						link: item.link,
+						store: item.store,
+						available: true,
+						lastSubmitedAt: Date.now(),
+						...telegram
+					}
+					updateItem(item.id, object)
+				})
+				.catch(function (err) {
+					let object = { 
+						title: item.title,
+						image: item.image,
+						price: item.price,
+						link: item.link,
+						store: item.store,
+						available: true,
+						lastSubmitedAt: Date.now()
+					}
+					updateItem(item.id, object)
+				})
+		} catch(err) {
+			logger.warn(`\try-catch: There has been an error`, err)
+		}
 	} else {
 		updateItem(item.id, { 
 			title: item.title,
@@ -141,7 +163,7 @@ function identifyImage(key, catalogItem) {
 	}
 }
 
-async function saveAndSubmit(delta, itemsMap) {
+async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 	let messagesSubmited = 0
 	let availableItems = []
 	let catalog = await refreshCatalogFromDatabase()
@@ -153,15 +175,30 @@ async function saveAndSubmit(delta, itemsMap) {
 		// If item exist in catalog
 		if(catalog.hasOwnProperty(key)) {
 			let catalogItem = catalog[key]
+			let availableAtText = moment(catalogItem.availableAt).tz('America/Mexico_City').format("Do [de] MMMM [a las] h:mmA")
 			let increase = 100 - item.price * 100 / catalogItem.price
 			if(catalogItem.available == false) {
-				logger.info(`\t[restoke]: ${item.title}`, item)
+				logger.info(`\t[restoke]: ${item.title}`, { ...item, availableAt: catalogItem.availableAt})
 				sendPhotoAndUpdate(
-					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`, 
+					`*Restoke:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}. Disponible el ${availableAtText}`, 
 					identifyImage(key, catalogItem), 
 					item,
 					catalogItem.alarm
 				)
+			} else if(item.price <= catalogItem.threshold) {
+				var duration = moment.duration(moment(Date.now()).diff(catalogItem.lastSubmitedAt));
+				var hours = duration.asHours();
+				logger.info(`\t[supa-deal]: ${item.title}, hours: ${hours}`, item)
+				if(hours >= telegramThreshold) {
+					sendPhotoAndUpdate(
+						`*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`, 
+						identifyImage(key, catalogItem), 
+						item,
+						catalogItem.alarm
+					)
+				} else {
+					availableItems.push(key)
+				}
 			} else if(increase >= delta) { // Sending message if price is lower
 				logger.info(`\t[deal]: ${item.title}`, item)
 				sendPhotoAndUpdate(
@@ -196,7 +233,7 @@ async function saveAndSubmit(delta, itemsMap) {
 		// Update in memory catalog
 		catalog[key] = item
 	})
-	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true })
+	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true, availableAt: Date.now() })
 	logger.info(`Updating availability: requested ${availableItems.length} resolved ${ack.modifiedCount} of ${ack.matchedCount}`, ack)
 	
 	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
@@ -206,7 +243,7 @@ async function saveAndSubmit(delta, itemsMap) {
 async function processIt() {
 	logger.info('Ranning cronjob');
 	requestAndParse(target.url)
-		.then(saveAndSubmit.bind(null, target.delta))
+		.then(saveAndSubmit.bind(null, target.delta, target.telegramThreshold))
 }
 logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
 cron.schedule(target.cron, () => {

@@ -89,13 +89,14 @@ async function sendPhotoAndUpdate(message, image, item) {
 				link: item.link,
 				store: item.store,
 				available: true,
+				lastSubmitedAt: Date.now(),
 				...telegram
 			}
 			updateItem(item.id, object)
 		})
 }
 
-async function saveAndSubmit(delta, itemsMap) {
+async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 	let messagesSubmited = 0
 	let availableItems = []
 	let catalog = await refreshCatalogFromDatabase()
@@ -113,6 +114,13 @@ async function saveAndSubmit(delta, itemsMap) {
 			} else if(catalog[key].price == 0) {
 				logger.info('	- [new-stock]: ' + item.title)
 				message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
+			} else if(item.price <= catalog[key].threshold) {
+				var duration = moment.duration(moment(Date.now()).diff(catalog[key].lastSubmitedAt));
+				var hours = duration.asHours();
+				logger.info('	- [supa-deal]: ' + item.title)
+				if(hours >= telegramThreshold) {
+					message = `*Super Deal:* El siguiente producto ha alcanzado el target [${item.title}](${item.link}) de $${catalogItem.threshold} con el precio *$${item.price}* en ${item.store}`
+				}
 			} else if(increase > delta) {
 				logger.info('	- [deal]: ' + item.title)
 				message = `*Deal:* El siguiente producto ha bajado  ${Math.floor(increase)}% [${item.title}](${item.link}) de $${catalog[key].price} a *$${item.price}* en ${item.store}`
@@ -149,7 +157,7 @@ async function saveAndSubmit(delta, itemsMap) {
 		}
 		catalog[key] = item
 	})
-	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true })
+	let ack = await Item.updateMany({ id: { $in: availableItems }, source: targetName }, { available: true, availableAt: Date.now() })
 	logger.info(`Updating availability: requested ${availableItems.length} resolved ${ack.modifiedCount} of ${ack.matchedCount}`, ack)
 	logger.info(`Finished processing ${Object.keys(itemsMap).length} items`)
 	return catalog
@@ -168,7 +176,7 @@ async function processIt() {
 			.then(Parser)
 	])
 	.then(MapUtils.mergeMaps)
-	.then(saveAndSubmit.bind(null, target.delta))
+	.then(saveAndSubmit.bind(null, target.delta, target.telegramThreshold))
 }
 
 logger.info(`Starting cron for ${targetName} with schedule time: ${target.cron}`)
