@@ -74,29 +74,53 @@ async function updateItem(id, object) {
 		})
 }
 
-async function sendPhotoAndUpdate(message, image, item) {
-	roboto.sendPhoto(image, message)
-		.then(message => {
-			let telegram = {}
-			if(message && message.hasOwnProperty('message_id')) {
-				telegram = {
-					fileId: message.file.file_id,
-					messageId: message.message_id,
-					chatId: message.chat_id,
+async function sendPhotoAndUpdate(message, image, item, alarm) {
+	if(alarm) {
+		roboto.sendPhoto(image, message)
+			.then(message => {
+				let telegram = {}
+				if(message && message.hasOwnProperty('message_id')) {
+					telegram = {
+						fileId: message.file.file_id,
+						messageId: message.message_id,
+						chatId: message.chat_id,
+					}
 				}
-			}
-			let object = { 
-				title: item.title,
-				image: item.image,
-				price: item.price,
-				link: item.link,
-				store: item.store,
-				available: true,
-				lastSubmitedAt: Date.now(),
-				...telegram
-			}
-			updateItem(item.id, object)
+				let object = { 
+					title: item.title,
+					image: item.image,
+					price: item.price,
+					link: item.link,
+					store: item.store,
+					available: true,
+					lastSubmitedAt: Date.now(),
+					...telegram
+				}
+				updateItem(item.id, object)
+			})
+			.catch(function (err) {
+				let object = { 
+					title: item.title,
+					image: item.image,
+					price: item.price,
+					link: item.link,
+					store: item.store,
+					available: true,
+					lastSubmitedAt: Date.now()
+				}
+				updateItem(item.id, object)
+			})
+	} else {
+		updateItem(item.id, { 
+			title: item.title,
+			image: item.image,
+			price: item.price,
+			link: item.link,
+			store: item.store,
+			available: true,
+			lastSubmitedAt: Date.now()
 		})
+	}
 }
 
 async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
@@ -141,9 +165,13 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 					image = catalogItem.fileId
 				}
 				if(catalogItem.alarm) {
-					sendPhotoAndUpdate(message, image, item)
+					sendPhotoAndUpdate(message, image, item, catalogItem.alarm)
 				} else {
-					updateItem(item.id, item)
+					updateItem(item.id, {
+						...item,
+						available: true,
+						lastSubmitedAt: Date.now()
+					})
 				}
 			} else {
 				availableItems.push(key)
@@ -155,7 +183,7 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 				logger.info('	- [new-stock]: ' + item.title)
 				let message = `*Nuevo:* El siguiente producto ha sido listado [${item.title}](${item.link}) con precio *$${item.price}* en ${item.store}`
 				let image = item.image
-				sendPhotoAndUpdate(message, image, item)
+				sendPhotoAndUpdate(message, image, item, true)
 			}
 		}
 		catalog[key] = item
