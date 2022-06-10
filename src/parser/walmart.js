@@ -32,11 +32,12 @@ module.exports = function consumeWalmart(content) {
 		logger.info('Processing ' + totalElements + ' filter to ' + filtered.length)
 		filtered
 			.forEach((item, i) => {
+				let image = item.hasOwnProperty('imageUrls') && item.imageUrls.hasOwnProperty('large') ? item.imageUrls.large : item.imageUrls.small;
 				itemsMap[item.id] = {
 					id: item.id,
 					title: item.skuDisplayName,
 					price: item.skuPrice,
-					image: site + item.imageUrls.large,
+					image: site + image,
 					link: site + item.productSeoUrl.replace(/&.*=.*/, "").replace(/#.*=.*/, ""),
 					store: 'Walmart',
 					monitor: true
