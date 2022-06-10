@@ -9,6 +9,9 @@ const Roboto = require('./src/roboto')
 const loggerFactory = require('./src/log/logger')
 const requestFactory = require('./src/commons/request')
 const config = require('./crawler.config')
+const moment = require('moment')
+
+moment.locale('es-mx');
 
 const targets = Object.keys(config.targets)
 const processArgs = process.argv.slice(2);
