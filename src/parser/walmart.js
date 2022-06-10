@@ -32,7 +32,16 @@ module.exports = function consumeWalmart(content) {
 		logger.info('Processing ' + totalElements + ' filter to ' + filtered.length)
 		filtered
 			.forEach((item, i) => {
-				let image = item.hasOwnProperty('imageUrls') && item.imageUrls.hasOwnProperty('large') ? item.imageUrls.large : item.imageUrls.small;
+				let image = '' 
+				if(item.hasOwnProperty('imageUrls')) {
+					if(item.imageUrls.hasOwnProperty('large')) {
+						image = item.imageUrls.large
+					} else if(item.imageUrls.hasOwnProperty('small')) {
+						image = item.imageUrls.small
+					} else {
+						logger.warn('Unable to determine imageUrls:', item.imageUrls);
+					}
+				}
 				itemsMap[item.id] = {
 					id: item.id,
 					title: item.skuDisplayName,
