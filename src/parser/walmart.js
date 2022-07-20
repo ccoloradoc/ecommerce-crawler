@@ -9,7 +9,10 @@ module.exports = function consumeWalmart(content) {
 		let itemsMap = {}
 		logger.info('Parsing content...')
 		let payload = JSON.parse(content)
-		let totalElements = payload.appendix.SearchResults.content.length
+		let totalElements = 0;
+		if(payload.appendix.SearchResults && payload.appendix.SearchResults.content && payload.appendix.SearchResults.content.length) {
+			totalElements = payload.appendix.SearchResults.content.length;
+		}
 		let filtered = payload.appendix.SearchResults.content
 			.filter(item => {
 				let result = brandFilterRegex.test(item.brandName.toLowerCase())
