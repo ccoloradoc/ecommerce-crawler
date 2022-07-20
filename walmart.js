@@ -197,13 +197,13 @@ async function saveAndSubmit(delta, telegramThreshold, itemsMap) {
 async function processIt() {
 	logger.info('Ranning cronjob');
 	Promise.all([
+		requestHandler(target.url, '&page=0')
+			.then(Parser),
 		requestHandler(target.url, '&page=1')
 			.then(Parser),
 		requestHandler(target.url, '&page=2')
 			.then(Parser),
 		requestHandler(target.url, '&page=3')
-			.then(Parser),
-		requestHandler(target.url, '&page=4')
 			.then(Parser)
 	])
 	.then(MapUtils.mergeMaps)
